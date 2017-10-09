@@ -1891,7 +1891,11 @@
                     "format": "int32"
                 },
                 "price": {
-                    "description": "price",
+                    "description": "Precio de venta de un producto",
+                    "type": "string"
+                },
+                "cost": {
+                    "description": "Precio pagado por unidad al proveedor por un producto",
                     "type": "string"
                 }
             }
