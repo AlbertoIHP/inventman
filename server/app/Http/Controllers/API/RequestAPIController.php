@@ -6,7 +6,7 @@ use App\Http\Requests\API\CreateRequestAPIRequest;
 use App\Http\Requests\API\UpdateRequestAPIRequest;
 use App\Models\Request;
 use App\Repositories\RequestRepository;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as rq;
 use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -19,263 +19,263 @@ use Response;
 
 class RequestAPIController extends AppBaseController
 {
-    /** @var  RequestRepository */
-    private $requestRepository;
+	/** @var  RequestRepository */
+	private $requestRepository;
 
-    public function __construct(RequestRepository $requestRepo)
-    {
-        $this->requestRepository = $requestRepo;
-    }
+	public function __construct(RequestRepository $requestRepo)
+	{
+		$this->requestRepository = $requestRepo;
+	}
 
-    /**
-     * @param Request $request
-     * @return Response
-     *
-     * @SWG\Get(
-     *      path="/requests",
-     *      summary="Get a listing of the Requests.",
-     *      tags={"Request"},
-     *      description="Get all Requests",
-     *      produces={"application/json"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *          @SWG\Schema(
-     *              type="object",
-     *              @SWG\Property(
-     *                  property="success",
-     *                  type="boolean"
-     *              ),
-     *              @SWG\Property(
-     *                  property="data",
-     *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/Request")
-     *              ),
-     *              @SWG\Property(
-     *                  property="message",
-     *                  type="string"
-     *              )
-     *          )
-     *      )
-     * )
-     */
-    public function index(Request $request)
-    {
-        $this->requestRepository->pushCriteria(new RequestCriteria($request));
-        $this->requestRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $requests = $this->requestRepository->all();
+	/**
+	 * @param Request $request
+	 * @return Response
+	 *
+	 * @SWG\Get(
+	 *      path="/requests",
+	 *      summary="Get a listing of the Requests.",
+	 *      tags={"Request"},
+	 *      description="Get all Requests",
+	 *      produces={"application/json"},
+	 *      @SWG\Response(
+	 *          response=200,
+	 *          description="successful operation",
+	 *          @SWG\Schema(
+	 *              type="object",
+	 *              @SWG\Property(
+	 *                  property="success",
+	 *                  type="boolean"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="data",
+	 *                  type="array",
+	 *                  @SWG\Items(ref="#/definitions/Request")
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="message",
+	 *                  type="string"
+	 *              )
+	 *          )
+	 *      )
+	 * )
+	 */
+	public function index(rq $request)
+	{
+		$this->requestRepository->pushCriteria(new RequestCriteria($request));
+		$this->requestRepository->pushCriteria(new LimitOffsetCriteria($request));
+		$requests = $this->requestRepository->all();
 
-        return $this->sendResponse($requests->toArray(), 'Requests retrieved successfully');
-    }
+		return $this->sendResponse($requests->toArray(), 'Requests retrieved successfully');
+	}
 
-    /**
-     * @param CreateRequestAPIRequest $request
-     * @return Response
-     *
-     * @SWG\Post(
-     *      path="/requests",
-     *      summary="Store a newly created Request in storage",
-     *      tags={"Request"},
-     *      description="Store Request",
-     *      produces={"application/json"},
-     *      @SWG\Parameter(
-     *          name="body",
-     *          in="body",
-     *          description="Request that should be stored",
-     *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Request")
-     *      ),
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *          @SWG\Schema(
-     *              type="object",
-     *              @SWG\Property(
-     *                  property="success",
-     *                  type="boolean"
-     *              ),
-     *              @SWG\Property(
-     *                  property="data",
-     *                  ref="#/definitions/Request"
-     *              ),
-     *              @SWG\Property(
-     *                  property="message",
-     *                  type="string"
-     *              )
-     *          )
-     *      )
-     * )
-     */
-    public function store(CreateRequestAPIRequest $request)
-    {
-        $input = $request->all();
+	/**
+	 * @param CreateRequestAPIRequest $request
+	 * @return Response
+	 *
+	 * @SWG\Post(
+	 *      path="/requests",
+	 *      summary="Store a newly created Request in storage",
+	 *      tags={"Request"},
+	 *      description="Store Request",
+	 *      produces={"application/json"},
+	 *      @SWG\Parameter(
+	 *          name="body",
+	 *          in="body",
+	 *          description="Request that should be stored",
+	 *          required=false,
+	 *          @SWG\Schema(ref="#/definitions/Request")
+	 *      ),
+	 *      @SWG\Response(
+	 *          response=200,
+	 *          description="successful operation",
+	 *          @SWG\Schema(
+	 *              type="object",
+	 *              @SWG\Property(
+	 *                  property="success",
+	 *                  type="boolean"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="data",
+	 *                  ref="#/definitions/Request"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="message",
+	 *                  type="string"
+	 *              )
+	 *          )
+	 *      )
+	 * )
+	 */
+	public function store(CreateRequestAPIRequest $request)
+	{
+		$input = $request->all();
 
-        $requests = $this->requestRepository->create($input);
+		$requests = $this->requestRepository->create($input);
 
-        return $this->sendResponse($requests->toArray(), 'Request saved successfully');
-    }
+		return $this->sendResponse($requests->toArray(), 'Request saved successfully');
+	}
 
-    /**
-     * @param int $id
-     * @return Response
-     *
-     * @SWG\Get(
-     *      path="/requests/{id}",
-     *      summary="Display the specified Request",
-     *      tags={"Request"},
-     *      description="Get Request",
-     *      produces={"application/json"},
-     *      @SWG\Parameter(
-     *          name="id",
-     *          description="id of Request",
-     *          type="integer",
-     *          required=true,
-     *          in="path"
-     *      ),
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *          @SWG\Schema(
-     *              type="object",
-     *              @SWG\Property(
-     *                  property="success",
-     *                  type="boolean"
-     *              ),
-     *              @SWG\Property(
-     *                  property="data",
-     *                  ref="#/definitions/Request"
-     *              ),
-     *              @SWG\Property(
-     *                  property="message",
-     *                  type="string"
-     *              )
-     *          )
-     *      )
-     * )
-     */
-    public function show($id)
-    {
-        /** @var Request $request */
-        $request = $this->requestRepository->findWithoutFail($id);
+	/**
+	 * @param int $id
+	 * @return Response
+	 *
+	 * @SWG\Get(
+	 *      path="/requests/{id}",
+	 *      summary="Display the specified Request",
+	 *      tags={"Request"},
+	 *      description="Get Request",
+	 *      produces={"application/json"},
+	 *      @SWG\Parameter(
+	 *          name="id",
+	 *          description="id of Request",
+	 *          type="integer",
+	 *          required=true,
+	 *          in="path"
+	 *      ),
+	 *      @SWG\Response(
+	 *          response=200,
+	 *          description="successful operation",
+	 *          @SWG\Schema(
+	 *              type="object",
+	 *              @SWG\Property(
+	 *                  property="success",
+	 *                  type="boolean"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="data",
+	 *                  ref="#/definitions/Request"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="message",
+	 *                  type="string"
+	 *              )
+	 *          )
+	 *      )
+	 * )
+	 */
+	public function show($id)
+	{
+		/** @var Request $request */
+		$request = $this->requestRepository->findWithoutFail($id);
 
-        if (empty($request)) {
-            return $this->sendError('Request not found');
-        }
+		if (empty($request)) {
+			return $this->sendError('Request not found');
+		}
 
-        return $this->sendResponse($request->toArray(), 'Request retrieved successfully');
-    }
+		return $this->sendResponse($request->toArray(), 'Request retrieved successfully');
+	}
 
-    /**
-     * @param int $id
-     * @param UpdateRequestAPIRequest $request
-     * @return Response
-     *
-     * @SWG\Put(
-     *      path="/requests/{id}",
-     *      summary="Update the specified Request in storage",
-     *      tags={"Request"},
-     *      description="Update Request",
-     *      produces={"application/json"},
-     *      @SWG\Parameter(
-     *          name="id",
-     *          description="id of Request",
-     *          type="integer",
-     *          required=true,
-     *          in="path"
-     *      ),
-     *      @SWG\Parameter(
-     *          name="body",
-     *          in="body",
-     *          description="Request that should be updated",
-     *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Request")
-     *      ),
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *          @SWG\Schema(
-     *              type="object",
-     *              @SWG\Property(
-     *                  property="success",
-     *                  type="boolean"
-     *              ),
-     *              @SWG\Property(
-     *                  property="data",
-     *                  ref="#/definitions/Request"
-     *              ),
-     *              @SWG\Property(
-     *                  property="message",
-     *                  type="string"
-     *              )
-     *          )
-     *      )
-     * )
-     */
-    public function update($id, UpdateRequestAPIRequest $request)
-    {
-        $input = $request->all();
+	/**
+	 * @param int $id
+	 * @param UpdateRequestAPIRequest $request
+	 * @return Response
+	 *
+	 * @SWG\Put(
+	 *      path="/requests/{id}",
+	 *      summary="Update the specified Request in storage",
+	 *      tags={"Request"},
+	 *      description="Update Request",
+	 *      produces={"application/json"},
+	 *      @SWG\Parameter(
+	 *          name="id",
+	 *          description="id of Request",
+	 *          type="integer",
+	 *          required=true,
+	 *          in="path"
+	 *      ),
+	 *      @SWG\Parameter(
+	 *          name="body",
+	 *          in="body",
+	 *          description="Request that should be updated",
+	 *          required=false,
+	 *          @SWG\Schema(ref="#/definitions/Request")
+	 *      ),
+	 *      @SWG\Response(
+	 *          response=200,
+	 *          description="successful operation",
+	 *          @SWG\Schema(
+	 *              type="object",
+	 *              @SWG\Property(
+	 *                  property="success",
+	 *                  type="boolean"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="data",
+	 *                  ref="#/definitions/Request"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="message",
+	 *                  type="string"
+	 *              )
+	 *          )
+	 *      )
+	 * )
+	 */
+	public function update($id, UpdateRequestAPIRequest $request)
+	{
+		$input = $request->all();
 
-        /** @var Request $request */
-        $request = $this->requestRepository->findWithoutFail($id);
+		/** @var Request $request */
+		$request = $this->requestRepository->findWithoutFail($id);
 
-        if (empty($request)) {
-            return $this->sendError('Request not found');
-        }
+		if (empty($request)) {
+			return $this->sendError('Request not found');
+		}
 
-        $request = $this->requestRepository->update($input, $id);
+		$request = $this->requestRepository->update($input, $id);
 
-        return $this->sendResponse($request->toArray(), 'Request updated successfully');
-    }
+		return $this->sendResponse($request->toArray(), 'Request updated successfully');
+	}
 
-    /**
-     * @param int $id
-     * @return Response
-     *
-     * @SWG\Delete(
-     *      path="/requests/{id}",
-     *      summary="Remove the specified Request from storage",
-     *      tags={"Request"},
-     *      description="Delete Request",
-     *      produces={"application/json"},
-     *      @SWG\Parameter(
-     *          name="id",
-     *          description="id of Request",
-     *          type="integer",
-     *          required=true,
-     *          in="path"
-     *      ),
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *          @SWG\Schema(
-     *              type="object",
-     *              @SWG\Property(
-     *                  property="success",
-     *                  type="boolean"
-     *              ),
-     *              @SWG\Property(
-     *                  property="data",
-     *                  type="string"
-     *              ),
-     *              @SWG\Property(
-     *                  property="message",
-     *                  type="string"
-     *              )
-     *          )
-     *      )
-     * )
-     */
-    public function destroy($id)
-    {
-        /** @var Request $request */
-        $request = $this->requestRepository->findWithoutFail($id);
+	/**
+	 * @param int $id
+	 * @return Response
+	 *
+	 * @SWG\Delete(
+	 *      path="/requests/{id}",
+	 *      summary="Remove the specified Request from storage",
+	 *      tags={"Request"},
+	 *      description="Delete Request",
+	 *      produces={"application/json"},
+	 *      @SWG\Parameter(
+	 *          name="id",
+	 *          description="id of Request",
+	 *          type="integer",
+	 *          required=true,
+	 *          in="path"
+	 *      ),
+	 *      @SWG\Response(
+	 *          response=200,
+	 *          description="successful operation",
+	 *          @SWG\Schema(
+	 *              type="object",
+	 *              @SWG\Property(
+	 *                  property="success",
+	 *                  type="boolean"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="data",
+	 *                  type="string"
+	 *              ),
+	 *              @SWG\Property(
+	 *                  property="message",
+	 *                  type="string"
+	 *              )
+	 *          )
+	 *      )
+	 * )
+	 */
+	public function destroy($id)
+	{
+		/** @var Request $request */
+		$request = $this->requestRepository->findWithoutFail($id);
 
-        if (empty($request)) {
-            return $this->sendError('Request not found');
-        }
+		if (empty($request)) {
+			return $this->sendError('Request not found');
+		}
 
-        $request->delete();
+		$request->delete();
 
-        return $this->sendResponse($id, 'Request deleted successfully');
-    }
+		return $this->sendResponse($id, 'Request deleted successfully');
+	}
 }

@@ -109,4 +109,6 @@ class Product extends Model
 	{
 		return $this->hasMany(\App\Models\Requestsdetail::class);
 	}
+	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }
+

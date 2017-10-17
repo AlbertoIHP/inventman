@@ -138,4 +138,5 @@ class User extends Authenticatable
 	{
 		return $this->belongsTo(\App\Models\Userstype::class);
 	}
+	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

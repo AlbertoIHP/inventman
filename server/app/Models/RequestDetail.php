@@ -37,57 +37,58 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class RequestDetail extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    public $table = 'requestsdetails';
-    
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-
-
-    protected $dates = ['deleted_at'];
+	public $table = 'requestsdetails';
+	
+	const CREATED_AT = 'created_at';
+	const UPDATED_AT = 'updated_at';
 
 
-    public $fillable = [
-        'requests_id',
-        'products_id',
-        'amount'
-    ];
+	protected $dates = ['deleted_at'];
 
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-        'requests_id' => 'integer',
-        'products_id' => 'integer',
-        'amount' => 'integer'
-    ];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        
-    ];
+	public $fillable = [
+		'requests_id',
+		'products_id',
+		'amount'
+	];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function product()
-    {
-        return $this->belongsTo(\App\Models\Product::class);
-    }
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'id' => 'integer',
+		'requests_id' => 'integer',
+		'products_id' => 'integer',
+		'amount' => 'integer'
+	];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function request()
-    {
-        return $this->belongsTo(\App\Models\Request::class);
-    }
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
+	public static $rules = [
+		
+	];
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 **/
+	public function product()
+	{
+		return $this->belongsTo(\App\Models\Product::class);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 **/
+	public function request()
+	{
+		return $this->belongsTo(\App\Models\Request::class);
+	}
+	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }
