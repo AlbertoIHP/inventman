@@ -37,3 +37,37 @@ Route::resource('providers', 'ProviderController');
 Route::resource('requestDetails', 'RequestDetailController');
 
 Route::resource('requests', 'RequestController');
+
+Route::resource('users', 'UserController');
+
+Route::resource('userTypes', 'UserTypeController');
+
+Route::resource('locals', 'LocalController');
+
+Route::resource('cities', 'CityController');
+
+Route::resource('inventaryTypes', 'InventaryTypeController');
+
+Route::resource('inventaries', 'InventaryController');
+
+Route::resource('requestBuys', 'RequestBuyController');
+
+Route::resource('requestBuyDetails', 'RequestBuyDetailController');
+
+Route::resource('providers', 'ProviderController');
+
+Route::resource('products', 'ProductController');
+
+Route::resource('sales', 'SaleController');
+
+Route::resource('users', 'UserController');
+
+Route::resource('productTypes', 'ProductTypeController');
+
+Route::resource('pics', 'PicController');
+
+Route::resource('products', 'ProductController');
+
+Route::resource('sales', 'SaleController');
+
+Route::resource('productsSales', 'ProductsSaleController');

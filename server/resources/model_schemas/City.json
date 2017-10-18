@@ -23,11 +23,11 @@
     },
     {
         "type": "relation",
-        "relation": "mtm,,inventaries"
+        "relation": "1tm,Local"
     },
     {
         "type": "relation",
-        "relation": "1tm,Local"
+        "relation": "mtm,,products"
     },
     {
         "type": "relation",

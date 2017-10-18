@@ -28,3 +28,21 @@
     <p>{!! $product->price !!}</p>
 </div>
 
+<!-- Cost Field -->
+<div class="form-group">
+    {!! Form::label('cost', 'Cost:') !!}
+    <p>{!! $product->cost !!}</p>
+</div>
+
+<!-- Productstypes Id Field -->
+<div class="form-group">
+    {!! Form::label('productstypes_id', 'Productstypes Id:') !!}
+    <p>{!! $product->productstypes_id !!}</p>
+</div>
+
+<!-- Code Field -->
+<div class="form-group">
+    {!! Form::label('code', 'Code:') !!}
+    <p>{!! $product->code !!}</p>
+</div>
+

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class informacionGeneral extends Seeder
 {
@@ -68,12 +69,21 @@ class informacionGeneral extends Seeder
 	]);
 
 
+
+	DB::table('productstypes')->insert([
+	  'name' =>'Zapatillas',
+	  'description' => 'Las zapatillase se ponen en los pies',
+	]);
+
+
 	DB::table('products')->insert([
 	  'name' =>'Nike Schock',
 	  'description' => 'Zapatillas 100% algodon',
 	  'providers_id' => 1,
 	  'price' => '35000',
 	  'cost' => '15000',
+	  'productstypes_id' => 1,
+	  'code' => '2423423'
 	]);
 
 	DB::table('products')->insert([
@@ -82,6 +92,8 @@ class informacionGeneral extends Seeder
 	  'providers_id' => 1,
 	  'price' => '15000',
 	  'cost' => '15000',
+	  'productstypes_id' => 1,
+	  'code' => '123123'
 	]);
 
 
@@ -91,6 +103,8 @@ class informacionGeneral extends Seeder
 	  'providers_id' => 1,
 	  'price' => '12764',
 	  'cost' => '15000',
+	  'productstypes_id' => 1,
+	  'code' => '23434'
 	]);
 
 
@@ -100,6 +114,8 @@ class informacionGeneral extends Seeder
 	  'providers_id' => 2,
 	  'price' => '35000',
 	  'cost' => '15000',
+	  'productstypes_id' => 1,
+	  'code' => '6456'
 	]);
 
 
@@ -109,6 +125,8 @@ class informacionGeneral extends Seeder
 	  'providers_id' => 2,
 	  'price' => '72888',
 	  'cost' => '15000',
+	  'productstypes_id' => 1,
+	  'code' => '678545'
 	]);
 
 
@@ -118,6 +136,8 @@ class informacionGeneral extends Seeder
 	  'providers_id' => 3,
 	  'price' => '24000',
 	  'cost' => '15000',
+	  'productstypes_id' => 1,
+	  'code' => '78354'
 	]);
 
 
@@ -128,6 +148,8 @@ class informacionGeneral extends Seeder
 	  'providers_id' => 3,
 	  'price' => '12000',
 	  'cost' => '15000',
+	  'productstypes_id' => 1,
+	  'code' => 'df123'
 	]);
 
 
@@ -193,23 +215,34 @@ class informacionGeneral extends Seeder
 	]);
 
 
+	DB::table('inventariestypes')->insert([
+	  'name' => 'Inventario de zapatillas',
+	  'description' => 'Aqui se guardan zapatillas',
+	]);
+
+
+
+
 
 	DB::table('inventaries')->insert([
 	  'locals_id' => 1,
 	  'products_id' => 1,
 	  'amount' => 20,
+	  'inventariestypes_id' => 1,
 	]);
 
 	DB::table('inventaries')->insert([
 	  'locals_id' => 1,
 	  'products_id' => 2,
 	  'amount' => 20,
+	  'inventariestypes_id' => 1,
 	]);
 
 	DB::table('inventaries')->insert([
 	  'locals_id' => 2,
 	  'products_id' => 1,
 	  'amount' => 20,
+	  'inventariestypes_id' => 1,
 	]);
 
 
@@ -217,6 +250,7 @@ class informacionGeneral extends Seeder
 	  'locals_id' => 2,
 	  'products_id' => 2,
 	  'amount' => 20,
+	  'inventariestypes_id' => 1,
 	]);
 
 	DB::table('users')->insert([
@@ -229,6 +263,20 @@ class informacionGeneral extends Seeder
 	  'userstypes_id' => 1,
 	  'local_id' => 1,
 	  'confirmed' => 1,
+	]);
+
+	DB::table('sales')->insert([
+	  'date' => Carbon::create('2017', '02', '01'),
+	  'description' => 'Herrera Poza',
+	  'users_id' => 1,
+	  'totalsale' => '25000'
+	]);
+
+	DB::table('productssales')->insert([
+	  'sales_id' => 1,
+	  'products_id' => 1,
+	  'amount' => '5',
+	  'total' => '5000'
 	]);
 
 

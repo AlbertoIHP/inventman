@@ -45,7 +45,10 @@ trait MakeProductTrait
             'name' => $fake->word,
             'description' => $fake->word,
             'providers_id' => $fake->randomDigitNotNull,
-            'price' => $fake->word
+            'price' => $fake->word,
+            'cost' => $fake->word,
+            'productstypes_id' => $fake->randomDigitNotNull,
+            'code' => $fake->word
         ], $productFields);
     }
 }

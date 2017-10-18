@@ -34,10 +34,6 @@
     },
     {
         "type": "relation",
-        "relation": "mtm,,inventaries"
-    },
-    {
-        "type": "relation",
         "relation": "1tm,Product"
     },
     {

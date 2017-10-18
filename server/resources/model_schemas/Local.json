@@ -53,6 +53,10 @@
     },
     {
         "type": "relation",
+        "relation": "mtm,,products"
+    },
+    {
+        "type": "relation",
         "relation": "1tm,Request"
     },
     {

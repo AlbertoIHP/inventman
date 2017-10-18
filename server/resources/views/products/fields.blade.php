@@ -22,6 +22,24 @@
     {!! Form::text('price', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Cost Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('cost', 'Cost:') !!}
+    {!! Form::text('cost', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Productstypes Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('productstypes_id', 'Productstypes Id:') !!}
+    {!! Form::number('productstypes_id', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Code Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('code', 'Code:') !!}
+    {!! Form::text('code', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

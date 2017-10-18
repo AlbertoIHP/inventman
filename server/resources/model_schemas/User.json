@@ -108,7 +108,7 @@
     },
     {
         "type": "relation",
-        "relation": "mtm,,inventaries"
+        "relation": "mtm,,products"
     },
     {
         "type": "relation",
@@ -117,5 +117,9 @@
     {
         "type": "relation",
         "relation": "mtm,,requestsdetails"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Sale"
     }
 ]
