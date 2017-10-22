@@ -28,10 +28,10 @@
     {!! Form::number('write', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Create Field -->
+<!-- Delete Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('create', 'Create:') !!}
-    {!! Form::number('create', null, ['class' => 'form-control']) !!}
+    {!! Form::label('delete', 'Delete:') !!}
+    {!! Form::number('delete', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

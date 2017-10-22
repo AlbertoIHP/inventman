@@ -77,7 +77,7 @@ class UserTypeDataTable extends DataTable
             'view' => ['name' => 'view', 'data' => 'view'],
             'edit' => ['name' => 'edit', 'data' => 'edit'],
             'write' => ['name' => 'write', 'data' => 'write'],
-            'create' => ['name' => 'create', 'data' => 'create']
+            'delete' => ['name' => 'delete', 'data' => 'delete']
         ];
     }
 

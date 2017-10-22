@@ -44,8 +44,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="create",
- *          description="create",
+ *          property="delete",
+ *          description="delete",
  *          type="integer",
  *          format="int32"
  *      )
@@ -70,7 +70,7 @@ class UserType extends Model
 		'view',
 		'edit',
 		'write',
-		'create'
+		'delete'
 	];
 
 	/**
@@ -85,7 +85,7 @@ class UserType extends Model
 		'view' => 'integer',
 		'edit' => 'integer',
 		'write' => 'integer',
-		'create' => 'integer'
+		'delete' => 'integer'
 	];
 
 	/**
@@ -104,7 +104,5 @@ class UserType extends Model
 	{
 		return $this->hasMany(\App\Models\User::class);
 	}
-
-
 	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

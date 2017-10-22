@@ -47,7 +47,7 @@ trait MakeUserTypeTrait
             'view' => $fake->randomDigitNotNull,
             'edit' => $fake->randomDigitNotNull,
             'write' => $fake->randomDigitNotNull,
-            'create' => $fake->randomDigitNotNull
+            'delete' => $fake->randomDigitNotNull
         ], $userTypeFields);
     }
 }

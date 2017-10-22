@@ -34,9 +34,9 @@
     <p>{!! $userType->write !!}</p>
 </div>
 
-<!-- Create Field -->
+<!-- Delete Field -->
 <div class="form-group">
-    {!! Form::label('create', 'Create:') !!}
-    <p>{!! $userType->create !!}</p>
+    {!! Form::label('delete', 'Delete:') !!}
+    <p>{!! $userType->delete !!}</p>
 </div>
 
