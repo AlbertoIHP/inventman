@@ -71,3 +71,5 @@ Route::resource('products', 'ProductController');
 Route::resource('sales', 'SaleController');
 
 Route::resource('productsSales', 'ProductsSaleController');
+
+Route::resource('userTypes', 'UserTypeController');

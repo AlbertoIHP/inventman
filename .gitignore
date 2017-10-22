@@ -1,4 +1,4 @@
-server/vendor
+pserver/vendor
 server/composer.lock
 cliente/node_modules
 cliente/package-lock.json

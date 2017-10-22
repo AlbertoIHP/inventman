@@ -73,7 +73,11 @@ class UserTypeDataTable extends DataTable
     {
         return [
             'name' => ['name' => 'name', 'data' => 'name'],
-            'description' => ['name' => 'description', 'data' => 'description']
+            'description' => ['name' => 'description', 'data' => 'description'],
+            'view' => ['name' => 'view', 'data' => 'view'],
+            'edit' => ['name' => 'edit', 'data' => 'edit'],
+            'write' => ['name' => 'write', 'data' => 'write'],
+            'create' => ['name' => 'create', 'data' => 'create']
         ];
     }
 

@@ -24,6 +24,30 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          property="description",
  *          description="description",
  *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="view",
+ *          description="view",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="edit",
+ *          description="edit",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="write",
+ *          description="write",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="create",
+ *          description="create",
+ *          type="integer",
+ *          format="int32"
  *      )
  * )
  */
@@ -42,7 +66,11 @@ class UserType extends Model
 
 	public $fillable = [
 		'name',
-		'description'
+		'description',
+		'view',
+		'edit',
+		'write',
+		'create'
 	];
 
 	/**
@@ -53,7 +81,11 @@ class UserType extends Model
 	protected $casts = [
 		'id' => 'integer',
 		'name' => 'string',
-		'description' => 'string'
+		'description' => 'string',
+		'view' => 'integer',
+		'edit' => 'integer',
+		'write' => 'integer',
+		'create' => 'integer'
 	];
 
 	/**
@@ -72,6 +104,7 @@ class UserType extends Model
 	{
 		return $this->hasMany(\App\Models\User::class);
 	}
+
 
 	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

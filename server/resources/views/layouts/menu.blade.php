@@ -102,3 +102,7 @@
     <a href="{!! route('productsSales.index') !!}"><i class="fa fa-edit"></i><span>Products Sales</span></a>
 </li>
 
+<li class="{{ Request::is('userTypes*') ? 'active' : '' }}">
+    <a href="{!! route('userTypes.index') !!}"><i class="fa fa-edit"></i><span>User Types</span></a>
+</li>
+

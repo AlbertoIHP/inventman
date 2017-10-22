@@ -16,3 +16,27 @@
     <p>{!! $userType->description !!}</p>
 </div>
 
+<!-- View Field -->
+<div class="form-group">
+    {!! Form::label('view', 'View:') !!}
+    <p>{!! $userType->view !!}</p>
+</div>
+
+<!-- Edit Field -->
+<div class="form-group">
+    {!! Form::label('edit', 'Edit:') !!}
+    <p>{!! $userType->edit !!}</p>
+</div>
+
+<!-- Write Field -->
+<div class="form-group">
+    {!! Form::label('write', 'Write:') !!}
+    <p>{!! $userType->write !!}</p>
+</div>
+
+<!-- Create Field -->
+<div class="form-group">
+    {!! Form::label('create', 'Create:') !!}
+    <p>{!! $userType->create !!}</p>
+</div>
+

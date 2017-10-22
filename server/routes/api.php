@@ -52,3 +52,6 @@ Route::group(['middleware' => ['cors']], function(){
 
 
 
+
+
+Route::resource('user_types', 'UserTypeAPIController');
