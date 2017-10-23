@@ -1399,6 +1399,205 @@
                 }
             }
         },
+        "/productsSales": {
+            "get": {
+                "tags": [
+                    "ProductsSale"
+                ],
+                "summary": "Get a listing of the ProductsSales.",
+                "description": "Get all ProductsSales",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProductsSale"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ProductsSale"
+                ],
+                "summary": "Store a newly created ProductsSale in storage",
+                "description": "Store ProductsSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "ProductsSale that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ProductsSale"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/ProductsSale"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/productsSales/{id}": {
+            "get": {
+                "tags": [
+                    "ProductsSale"
+                ],
+                "summary": "Display the specified ProductsSale",
+                "description": "Get ProductsSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of ProductsSale",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/ProductsSale"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ProductsSale"
+                ],
+                "summary": "Update the specified ProductsSale in storage",
+                "description": "Update ProductsSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of ProductsSale",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "ProductsSale that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ProductsSale"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/ProductsSale"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ProductsSale"
+                ],
+                "summary": "Remove the specified ProductsSale from storage",
+                "description": "Delete ProductsSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of ProductsSale",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/providers": {
             "get": {
                 "tags": [
@@ -2775,6 +2974,36 @@
                 }
             }
         },
+        "ProductsSale": {
+            "required": [
+                ""
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sales_id": {
+                    "description": "sales_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "products_id": {
+                    "description": "products_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "amount": {
+                    "description": "amount",
+                    "type": "string"
+                },
+                "total": {
+                    "description": "total",
+                    "type": "string"
+                }
+            }
+        },
         "Provider": {
             "required": [
                 ""
@@ -2863,15 +3092,14 @@
                     "description": "description",
                     "type": "string"
                 },
-                "products_id": {
-                    "description": "products_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
                 "users_id": {
                     "description": "users_id",
                     "type": "integer",
                     "format": "int32"
+                },
+                "totalsale": {
+                    "description": "totalsale",
+                    "type": "string"
                 }
             }
         },
@@ -2938,6 +3166,26 @@
                 "description": {
                     "description": "description",
                     "type": "string"
+                },
+                "view": {
+                    "description": "view",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "edit": {
+                    "description": "edit",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "write": {
+                    "description": "write",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "delete": {
+                    "description": "delete",
+                    "type": "integer",
+                    "format": "int32"
                 }
             }
         }

@@ -10,7 +10,7 @@ import router from './router'
 
 //Servicios
   //Servicio que permite obtener informacion desde el localStorage
-import LocalStorageCredentialsService from './services';
+import { LocalStorageCredentialsService } from './services';
 
 //Las constantes en este caso son variables que no cambian en toda la ejecucion del codigo
 import {address} from './constants'

@@ -1,23 +1,30 @@
+  <!-- Esta seccion del componente View, hace referencia al HTML-->
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+  <section>
+    <navigation></navigation>
+    <div class="abajoNavBar">
+      <router-view></router-view>
+    </div>
+  </section>
 </template>
 
+  <!-- Esta seccion del componente View, hace referencia al JS-->
 <script>
-export default {
-  name: 'app'
-}
+  //El script puede ser escrito como si se tratara de un fichero JS
+  import navigation from '@/components/Navbar'
+
+  //Luego exportamos el componente de navegacion para ser utilziado en el template
+  export default {
+    components: {
+      navigation
+    }
+  }
 </script>
 
+  <!-- Esta seccion del componente View, hace referencia al CSS-->
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.abajoNavBar
+{
+  padding-top: 3%
 }
 </style>

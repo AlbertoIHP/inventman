@@ -1,4 +1,7 @@
 import LocalStorageCredentialsService from './LocalStorageCredentials.service'
+import ApiConnect from './ApiDefault.service'
+import CityService from './CityService.service'
 
-
-export default LocalStorageCredentialsService
+export  { LocalStorageCredentialsService }
+export { ApiConnect }
+export { CityService }
