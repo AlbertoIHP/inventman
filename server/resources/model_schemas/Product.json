@@ -88,6 +88,21 @@
         "inIndex": true
     },
     {
+        "name": "productscategories_id",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Productscategory"
+    },
+    {
         "type": "relation",
         "relation": "mt1,Productstype"
     },

@@ -40,6 +40,12 @@
     {!! Form::text('code', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Productscategories Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('productscategories_id', 'Productscategories Id:') !!}
+    {!! Form::number('productscategories_id', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

@@ -7,13 +7,13 @@
 
 <script>
   export default {
-    // data () {
-    //
-    // },
-    // methods:
-    // {
-    //
-    // }
+    data:  ({
+
+    }),
+    methods:
+    {
+
+    }
   }
 </script>
 

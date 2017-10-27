@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreateProductAPIRequest;
-use App\Http\Requests\API\UpdateProductAPIRequest;
-use App\Models\Product;
-use App\Repositories\ProductRepository;
+use App\Http\Requests\API\CreateProductCategoryAPIRequest;
+use App\Http\Requests\API\UpdateProductCategoryAPIRequest;
+use App\Models\ProductCategory;
+use App\Repositories\ProductCategoryRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
@@ -13,18 +13,18 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
 /**
- * Class ProductController
+ * Class ProductCategoryController
  * @package App\Http\Controllers\API
  */
 
-class ProductAPIController extends AppBaseController
+class ProductCategoryAPIController extends AppBaseController
 {
-    /** @var  ProductRepository */
-    private $productRepository;
+    /** @var  ProductCategoryRepository */
+    private $productCategoryRepository;
 
-    public function __construct(ProductRepository $productRepo)
+    public function __construct(ProductCategoryRepository $productCategoryRepo)
     {
-        $this->productRepository = $productRepo;
+        $this->productCategoryRepository = $productCategoryRepo;
     }
 
     /**
@@ -32,10 +32,10 @@ class ProductAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/products",
-     *      summary="Get a listing of the Products.",
-     *      tags={"Product"},
-     *      description="Get all Products",
+     *      path="/productCategories",
+     *      summary="Get a listing of the ProductCategories.",
+     *      tags={"ProductCategory"},
+     *      description="Get all ProductCategories",
      *      produces={"application/json"},
      *      @SWG\Response(
      *          response=200,
@@ -49,7 +49,7 @@ class ProductAPIController extends AppBaseController
      *              @SWG\Property(
      *                  property="data",
      *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/Product")
+     *                  @SWG\Items(ref="#/definitions/ProductCategory")
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -61,29 +61,29 @@ class ProductAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->productRepository->pushCriteria(new RequestCriteria($request));
-        $this->productRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $products = $this->productRepository->all();
+        $this->productCategoryRepository->pushCriteria(new RequestCriteria($request));
+        $this->productCategoryRepository->pushCriteria(new LimitOffsetCriteria($request));
+        $productCategories = $this->productCategoryRepository->all();
 
-        return $this->sendResponse($products->toArray(), 'Products retrieved successfully');
+        return $this->sendResponse($productCategories->toArray(), 'Product Categories retrieved successfully');
     }
 
     /**
-     * @param CreateProductAPIRequest $request
+     * @param CreateProductCategoryAPIRequest $request
      * @return Response
      *
      * @SWG\Post(
-     *      path="/products",
-     *      summary="Store a newly created Product in storage",
-     *      tags={"Product"},
-     *      description="Store Product",
+     *      path="/productCategories",
+     *      summary="Store a newly created ProductCategory in storage",
+     *      tags={"ProductCategory"},
+     *      description="Store ProductCategory",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Product that should be stored",
+     *          description="ProductCategory that should be stored",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Product")
+     *          @SWG\Schema(ref="#/definitions/ProductCategory")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -96,7 +96,7 @@ class ProductAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Product"
+     *                  ref="#/definitions/ProductCategory"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -106,13 +106,13 @@ class ProductAPIController extends AppBaseController
      *      )
      * )
      */
-    public function store(CreateProductAPIRequest $request)
+    public function store(CreateProductCategoryAPIRequest $request)
     {
         $input = $request->all();
 
-        $products = $this->productRepository->create($input);
+        $productCategories = $this->productCategoryRepository->create($input);
 
-        return $this->sendResponse($products->toArray(), 'Product saved successfully');
+        return $this->sendResponse($productCategories->toArray(), 'Product Category saved successfully');
     }
 
     /**
@@ -120,14 +120,14 @@ class ProductAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/products/{id}",
-     *      summary="Display the specified Product",
-     *      tags={"Product"},
-     *      description="Get Product",
+     *      path="/productCategories/{id}",
+     *      summary="Display the specified ProductCategory",
+     *      tags={"ProductCategory"},
+     *      description="Get ProductCategory",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Product",
+     *          description="id of ProductCategory",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -143,7 +143,7 @@ class ProductAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Product"
+     *                  ref="#/definitions/ProductCategory"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -155,30 +155,30 @@ class ProductAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Product $product */
-        $product = $this->productRepository->findWithoutFail($id);
+        /** @var ProductCategory $productCategory */
+        $productCategory = $this->productCategoryRepository->findWithoutFail($id);
 
-        if (empty($product)) {
-            return $this->sendError('Product not found');
+        if (empty($productCategory)) {
+            return $this->sendError('Product Category not found');
         }
 
-        return $this->sendResponse($product->toArray(), 'Product retrieved successfully');
+        return $this->sendResponse($productCategory->toArray(), 'Product Category retrieved successfully');
     }
 
     /**
      * @param int $id
-     * @param UpdateProductAPIRequest $request
+     * @param UpdateProductCategoryAPIRequest $request
      * @return Response
      *
      * @SWG\Put(
-     *      path="/products/{id}",
-     *      summary="Update the specified Product in storage",
-     *      tags={"Product"},
-     *      description="Update Product",
+     *      path="/productCategories/{id}",
+     *      summary="Update the specified ProductCategory in storage",
+     *      tags={"ProductCategory"},
+     *      description="Update ProductCategory",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Product",
+     *          description="id of ProductCategory",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -186,9 +186,9 @@ class ProductAPIController extends AppBaseController
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Product that should be updated",
+     *          description="ProductCategory that should be updated",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Product")
+     *          @SWG\Schema(ref="#/definitions/ProductCategory")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -201,7 +201,7 @@ class ProductAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Product"
+     *                  ref="#/definitions/ProductCategory"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -211,20 +211,20 @@ class ProductAPIController extends AppBaseController
      *      )
      * )
      */
-    public function update($id, UpdateProductAPIRequest $request)
+    public function update($id, UpdateProductCategoryAPIRequest $request)
     {
         $input = $request->all();
 
-        /** @var Product $product */
-        $product = $this->productRepository->findWithoutFail($id);
+        /** @var ProductCategory $productCategory */
+        $productCategory = $this->productCategoryRepository->findWithoutFail($id);
 
-        if (empty($product)) {
-            return $this->sendError('Product not found');
+        if (empty($productCategory)) {
+            return $this->sendError('Product Category not found');
         }
 
-        $product = $this->productRepository->update($input, $id);
+        $productCategory = $this->productCategoryRepository->update($input, $id);
 
-        return $this->sendResponse($product->toArray(), 'Product updated successfully');
+        return $this->sendResponse($productCategory->toArray(), 'ProductCategory updated successfully');
     }
 
     /**
@@ -232,14 +232,14 @@ class ProductAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Delete(
-     *      path="/products/{id}",
-     *      summary="Remove the specified Product from storage",
-     *      tags={"Product"},
-     *      description="Delete Product",
+     *      path="/productCategories/{id}",
+     *      summary="Remove the specified ProductCategory from storage",
+     *      tags={"ProductCategory"},
+     *      description="Delete ProductCategory",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Product",
+     *          description="id of ProductCategory",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -267,15 +267,15 @@ class ProductAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Product $product */
-        $product = $this->productRepository->findWithoutFail($id);
+        /** @var ProductCategory $productCategory */
+        $productCategory = $this->productCategoryRepository->findWithoutFail($id);
 
-        if (empty($product)) {
-            return $this->sendError('Product not found');
+        if (empty($productCategory)) {
+            return $this->sendError('Product Category not found');
         }
 
-        $product->delete();
+        $productCategory->delete();
 
-        return $this->sendResponse($id, 'Product deleted successfully');
+        return $this->sendResponse($id, 'Product Category deleted successfully');
     }
 }

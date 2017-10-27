@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Product;
+use App\Models\ProductCategory;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 
-class ProductDataTable extends DataTable
+class ProductCategoryDataTable extends DataTable
 {
 
     /**
@@ -16,7 +16,7 @@ class ProductDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'products.datatables_actions')
+            ->addColumn('action', 'product_categories.datatables_actions')
             ->make(true);
     }
 
@@ -27,9 +27,9 @@ class ProductDataTable extends DataTable
      */
     public function query()
     {
-        $products = Product::query();
+        $productCategories = ProductCategory::query();
 
-        return $this->applyScopes($products);
+        return $this->applyScopes($productCategories);
     }
 
     /**
@@ -72,14 +72,7 @@ class ProductDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'name' => ['name' => 'name', 'data' => 'name'],
-            'description' => ['name' => 'description', 'data' => 'description'],
-            'providers_id' => ['name' => 'providers_id', 'data' => 'providers_id'],
-            'price' => ['name' => 'price', 'data' => 'price'],
-            'cost' => ['name' => 'cost', 'data' => 'cost'],
-            'productstypes_id' => ['name' => 'productstypes_id', 'data' => 'productstypes_id'],
-            'code' => ['name' => 'code', 'data' => 'code'],
-            'productscategories_id' => ['name' => 'productscategories_id', 'data' => 'productscategories_id']
+            'name' => ['name' => 'name', 'data' => 'name']
         ];
     }
 
@@ -90,6 +83,6 @@ class ProductDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'products';
+        return 'productCategories';
     }
 }

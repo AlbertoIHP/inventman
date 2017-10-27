@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="ProductType",
+ *      definition="ProductCategory",
  *      required={""},
  *      @SWG\Property(
  *          property="id",
@@ -19,19 +19,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          property="name",
  *          description="name",
  *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="description",
- *          description="description",
- *          type="string"
  *      )
  * )
  */
-class ProductType extends Model
+class ProductCategory extends Model
 {
     use SoftDeletes;
 
-    public $table = 'productstypes';
+    public $table = 'productscategories';
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -41,8 +36,7 @@ class ProductType extends Model
 
 
     public $fillable = [
-        'name',
-        'description'
+        'name'
     ];
 
     /**
@@ -52,8 +46,7 @@ class ProductType extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
-        'description' => 'string'
+        'name' => 'string'
     ];
 
     /**

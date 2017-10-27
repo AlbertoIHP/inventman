@@ -12,6 +12,23 @@ class informacionGeneral extends Seeder
 	 */
 	public function run()
 	{
+
+    DB::table('productscategories')->insert([
+  	  'name' =>'Deporte',
+  	]);
+    DB::table('productscategories')->insert([
+  	  'name' =>'Formal',
+  	]);
+    DB::table('productscategories')->insert([
+  	  'name' =>'Casual',
+  	]);
+    DB::table('productscategories')->insert([
+  	  'name' =>'Chaquetas',
+  	]);
+    DB::table('productscategories')->insert([
+  	  'name' =>'Pantalones',
+  	]);
+
 	DB::table('cities')->insert([
 	  'name' =>'Temuco',
 	]);
@@ -83,6 +100,7 @@ class informacionGeneral extends Seeder
 	  'price' => '35000',
 	  'cost' => '15000',
 	  'productstypes_id' => 1,
+     'productscategories_id' => 1,
 	  'code' => '2423423'
 	]);
 
@@ -93,6 +111,7 @@ class informacionGeneral extends Seeder
 	  'price' => '15000',
 	  'cost' => '15000',
 	  'productstypes_id' => 1,
+	     'productscategories_id' => 1,
 	  'code' => '123123'
 	]);
 
@@ -104,6 +123,7 @@ class informacionGeneral extends Seeder
 	  'price' => '12764',
 	  'cost' => '15000',
 	  'productstypes_id' => 1,
+		     'productscategories_id' => 1,
 	  'code' => '23434'
 	]);
 
@@ -115,6 +135,7 @@ class informacionGeneral extends Seeder
 	  'price' => '35000',
 	  'cost' => '15000',
 	  'productstypes_id' => 1,
+		     'productscategories_id' => 1,
 	  'code' => '6456'
 	]);
 
@@ -126,6 +147,7 @@ class informacionGeneral extends Seeder
 	  'price' => '72888',
 	  'cost' => '15000',
 	  'productstypes_id' => 1,
+		     'productscategories_id' => 1,
 	  'code' => '678545'
 	]);
 
@@ -137,6 +159,7 @@ class informacionGeneral extends Seeder
 	  'price' => '24000',
 	  'cost' => '15000',
 	  'productstypes_id' => 1,
+		     'productscategories_id' => 1,
 	  'code' => '78354'
 	]);
 
@@ -149,6 +172,7 @@ class informacionGeneral extends Seeder
 	  'price' => '12000',
 	  'cost' => '15000',
 	  'productstypes_id' => 1,
+		     'productscategories_id' => 1,
 	  'code' => 'df123'
 	]);
 

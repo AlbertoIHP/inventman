@@ -46,3 +46,9 @@
     <p>{!! $product->code !!}</p>
 </div>
 
+<!-- Productscategories Id Field -->
+<div class="form-group">
+    {!! Form::label('productscategories_id', 'Productscategories Id:') !!}
+    <p>{!! $product->productscategories_id !!}</p>
+</div>
+

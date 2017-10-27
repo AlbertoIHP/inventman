@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
-use Illuminate\Foundation\Http\FormRequest;
-use App\Models\InventaryType;
+use App\Models\ProductCategory;
+use InfyOm\Generator\Request\APIRequest;
 
-class CreateInventaryTypeRequest extends FormRequest
+class UpdateProductCategoryAPIRequest extends APIRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,6 +24,6 @@ class CreateInventaryTypeRequest extends FormRequest
      */
     public function rules()
     {
-        return InventaryType::$rules;
+        return ProductCategory::$rules;
     }
 }

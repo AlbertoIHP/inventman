@@ -24,6 +24,12 @@ class CreateUsersTable extends Migration
 
 		});
 
+    Schema::table('productscategories', function (Blueprint $table) {
+			$table->rememberToken();
+			$table->timestamps();
+			$table->timestamp('deleted_at')->nullable();
+
+		});
 		Schema::table('userstypes', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();

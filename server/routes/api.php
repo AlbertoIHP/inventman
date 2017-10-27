@@ -45,8 +45,5 @@ Route::group(['middleware' => ['cors']], function(){
 
 	Route::resource('v1/productsSales', 'ProductsSaleAPIController');
 
-
+   Route::resource('v1/productCategories', 'ProductCategoryAPIController');
 });
-
-
-

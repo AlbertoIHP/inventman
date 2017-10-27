@@ -110,3 +110,15 @@
     <a href="{!! route('userTypes.index') !!}"><i class="fa fa-edit"></i><span>User Types</span></a>
 </li>
 
+<li class="{{ Request::is('products*') ? 'active' : '' }}">
+    <a href="{!! route('products.index') !!}"><i class="fa fa-edit"></i><span>Products</span></a>
+</li>
+
+<li class="{{ Request::is('productTypes*') ? 'active' : '' }}">
+    <a href="{!! route('productTypes.index') !!}"><i class="fa fa-edit"></i><span>Product Types</span></a>
+</li>
+
+<li class="{{ Request::is('productCategories*') ? 'active' : '' }}">
+    <a href="{!! route('productCategories.index') !!}"><i class="fa fa-edit"></i><span>Product Categories</span></a>
+</li>
+
