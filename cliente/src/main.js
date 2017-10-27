@@ -8,6 +8,10 @@ import App from './App'
 import router from './router'
 
 
+import VueMaterial from 'vue-material'
+Vue.use(VueMaterial)
+
+import('../node_modules/vuetify/dist/vuetify.min.css')
 //Servicios
   //Servicio que permite obtener informacion desde el localStorage
 import { LocalStorageCredentialsService } from './services';
@@ -27,7 +31,6 @@ Vue.config.productionTip = false
 
 //Le entregamos a la instancia de Vue los recursos para consumir la API
 Vue.use(VueResource)
-
 
 
 

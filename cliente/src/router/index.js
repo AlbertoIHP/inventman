@@ -5,9 +5,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //Importamos todos los componentes que deseemos enrutar
-import Pagina1 from '@/components/Pagina1'
-import Pagina2 from '@/components/Pagina2'
-import Pagina3 from '@/components/Pagina3'
+import Home from '@/components/Home'
+import Actividad from '@/components/Actividad'
+import Inventario from '@/components/Inventario'
+import Login from '@/components/Login'
 
 //Entregamos a Vue el componente de rutas para que este lo utilice en todos los sub componentes, o todos aquellos que utilicen esta instancia
 Vue.use(Router)
@@ -18,18 +19,23 @@ export default new Router({
   [
     {
       path: '/',
-      name: 'Pagina1',
-      component: Pagina1
+      name: 'Login',
+      component: Login
     },
     {
-      path: '/pagina2',
-      name: 'Pagina2',
-      component: Pagina2
+      path: '/home',
+      name: 'Home',
+      component: Home
     },
     {
-      path: '/pagina3',
-      name: 'Pagina3',
-      component: Pagina3
+      path: '/inventario',
+      name: 'Inventario',
+      component: Inventario
+    },
+    {
+      path: '/actividad',
+      name: 'Actividad',
+      component: Actividad
     }
   ]
 })
