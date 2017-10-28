@@ -6,39 +6,46 @@
       </div>
     </div>
 
-    <md-layout md-gutter  v-for="(producto, index) in productosMostrar">
-      <md-layout   md-flex-offset="20">
+    <md-layout md-gutter  v-for="producto in arregloAuxiliar">
+      <md-layout   md-flex-offset="20" v-if="producto[0]">
         <md-card class="tarjetaProducto">
           <md-card-media>
-            <img src="http://www.bellezachile.cl/users/producto/493.jpg" class="imagenProducto">
+            <img v-bind:src="producto[0].urlimage" class="imagenProducto">
           </md-card-media>
 
           <md-card-header>
-            <div class="md-title">{{producto.name}} </div>
-            <div class="md-subhead">{{producto.description}}</div>
+            <div class="md-title">{{producto[0].name}} </div>
+            <div class="md-subhead">{{producto[0].description}}</div>
           </md-card-header>
 
           <md-card-actions>
-            <md-button  @click="openDialog('detallesProducto', producto)">Ver detalles</md-button>
+            <md-button  @click="openDialog('detallesProducto', producto[0])">Ver detalles</md-button>
           </md-card-actions>
         </md-card>
       </md-layout>
+      <md-layout v-else >
 
-      <md-layout  >
+      </md-layout>
+
+
+      <md-layout v-if="producto[1]" >
         <md-card class="tarjetaProducto">
           <md-card-media>
-            <img src="http://www.bellezachile.cl/users/producto/493.jpg" class="imagenProducto">
+            <img v-bind:src="producto[1].urlimage"  class="imagenProducto">
           </md-card-media>
 
           <md-card-header>
-            <div class="md-title">{{producto.name}} </div>
-            <div class="md-subhead">{{producto.description}}</div>
+            <div class="md-title">{{producto[1].name}} </div>
+            <div class="md-subhead">{{producto[1].description}}</div>
           </md-card-header>
 
           <md-card-actions>
-            <md-button @click="openDialog('detallesProducto', producto)">Ver detalles</md-button>
+            <md-button @click="openDialog('detallesProducto', producto[1])">Ver detalles</md-button>
           </md-card-actions>
         </md-card>
+      </md-layout>
+      <md-layout v-else >
+
       </md-layout>
       <br>
     </md-layout>
@@ -102,7 +109,8 @@
         categorias: [],
         tipos: [],
         productosMostrar: [],
-        detalle: {name: ""}
+        detalle: {name: ""},
+        arregloAuxiliar: []
       }
     },
     created() {
@@ -124,7 +132,11 @@
     methods:
     {
       openDialog(ref, producto) {
+        if(producto)
+        {
         this.detalle = producto
+        }
+
         this.$refs[ref].open();
       },
       closeDialog(ref) {
@@ -147,6 +159,30 @@
 
         this.consultarProductos(tipo)
       },
+      organizarArreglo()
+      {
+
+        this.arregloAuxiliar = [];
+        var cont = 0
+        for (let x = 0 ; x < this.productosMostrar.length ; x = x + 2)
+        {
+          this.arregloAuxiliar.push([])
+          if( this.productosMostrar[x] )
+          {
+          this.arregloAuxiliar[cont].push(this.productosMostrar[x])
+          }
+
+          if(this.productosMostrar[(x+1)])
+          {
+          this.arregloAuxiliar[cont].push(this.productosMostrar[(x+1)])
+        }
+
+          cont++
+        }
+
+        console.log("MOSTRANDO ARREGLO AUXILIAR")
+        console.log(this.arregloAuxiliar)
+      },
       consultarProductos(tipo)
       {
 
@@ -156,6 +192,7 @@
             this.productos = data.body.data
             this.tipoBusqueda = "Todos los Productos"
             this.productosMostrar = this.productos
+            this.organizarArreglo();
           })
         }
         else
@@ -182,9 +219,8 @@
               }
             }
           }
-
+          this.organizarArreglo();
         }
-        console.log(this.productosMostrar)
       }
     }
   }
