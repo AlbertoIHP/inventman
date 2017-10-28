@@ -73,5 +73,5 @@ class ProductType extends Model
         return $this->hasMany(\App\Models\Product::class);
     }
 
-	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
+    	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

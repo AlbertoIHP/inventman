@@ -205,6 +205,205 @@
                 }
             }
         },
+        "/functions": {
+            "get": {
+                "tags": [
+                    "Function"
+                ],
+                "summary": "Get a listing of the Functions.",
+                "description": "Get all Functions",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Function"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Function"
+                ],
+                "summary": "Store a newly created Function in storage",
+                "description": "Store Function",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Function that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Function"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Function"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/functions/{id}": {
+            "get": {
+                "tags": [
+                    "Function"
+                ],
+                "summary": "Display the specified Function",
+                "description": "Get Function",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Function",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Function"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Function"
+                ],
+                "summary": "Update the specified Function in storage",
+                "description": "Update Function",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Function",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Function that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Function"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Function"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Function"
+                ],
+                "summary": "Remove the specified Function from storage",
+                "description": "Delete Function",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Function",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/inventaries": {
             "get": {
                 "tags": [
@@ -379,205 +578,6 @@
                         "name": "id",
                         "in": "path",
                         "description": "id of Inventary",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "string"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/inventaryTypes": {
-            "get": {
-                "tags": [
-                    "InventaryType"
-                ],
-                "summary": "Get a listing of the InventaryTypes.",
-                "description": "Get all InventaryTypes",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/InventaryType"
-                                    }
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "InventaryType"
-                ],
-                "summary": "Store a newly created InventaryType in storage",
-                "description": "Store InventaryType",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "InventaryType that should be stored",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/InventaryType"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/InventaryType"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/inventaryTypes/{id}": {
-            "get": {
-                "tags": [
-                    "InventaryType"
-                ],
-                "summary": "Display the specified InventaryType",
-                "description": "Get InventaryType",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of InventaryType",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/InventaryType"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "InventaryType"
-                ],
-                "summary": "Update the specified InventaryType in storage",
-                "description": "Update InventaryType",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of InventaryType",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "InventaryType that should be updated",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/InventaryType"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/InventaryType"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "InventaryType"
-                ],
-                "summary": "Remove the specified InventaryType from storage",
-                "description": "Delete InventaryType",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of InventaryType",
                         "required": true,
                         "type": "integer"
                     }
@@ -802,13 +802,13 @@
                 }
             }
         },
-        "/pics": {
+        "/orders": {
             "get": {
                 "tags": [
-                    "Pic"
+                    "Order"
                 ],
-                "summary": "Get a listing of the Pics.",
-                "description": "Get all Pics",
+                "summary": "Get a listing of the Orders.",
+                "description": "Get all Orders",
                 "produces": [
                     "application/json"
                 ],
@@ -823,7 +823,7 @@
                                 "data": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/Pic"
+                                        "$ref": "#/definitions/Order"
                                     }
                                 },
                                 "message": {
@@ -837,10 +837,10 @@
             },
             "post": {
                 "tags": [
-                    "Pic"
+                    "Order"
                 ],
-                "summary": "Store a newly created Pic in storage",
-                "description": "Store Pic",
+                "summary": "Store a newly created Order in storage",
+                "description": "Store Order",
                 "produces": [
                     "application/json"
                 ],
@@ -848,10 +848,10 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Pic that should be stored",
+                        "description": "Order that should be stored",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/Pic"
+                            "$ref": "#/definitions/Order"
                         }
                     }
                 ],
@@ -864,7 +864,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Pic"
+                                    "$ref": "#/definitions/Order"
                                 },
                                 "message": {
                                     "type": "string"
@@ -876,13 +876,13 @@
                 }
             }
         },
-        "/pics/{id}": {
+        "/orders/{id}": {
             "get": {
                 "tags": [
-                    "Pic"
+                    "Order"
                 ],
-                "summary": "Display the specified Pic",
-                "description": "Get Pic",
+                "summary": "Display the specified Order",
+                "description": "Get Order",
                 "produces": [
                     "application/json"
                 ],
@@ -890,7 +890,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Pic",
+                        "description": "id of Order",
                         "required": true,
                         "type": "integer"
                     }
@@ -904,7 +904,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Pic"
+                                    "$ref": "#/definitions/Order"
                                 },
                                 "message": {
                                     "type": "string"
@@ -917,10 +917,10 @@
             },
             "put": {
                 "tags": [
-                    "Pic"
+                    "Order"
                 ],
-                "summary": "Update the specified Pic in storage",
-                "description": "Update Pic",
+                "summary": "Update the specified Order in storage",
+                "description": "Update Order",
                 "produces": [
                     "application/json"
                 ],
@@ -928,17 +928,17 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Pic",
+                        "description": "id of Order",
                         "required": true,
                         "type": "integer"
                     },
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Pic that should be updated",
+                        "description": "Order that should be updated",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/Pic"
+                            "$ref": "#/definitions/Order"
                         }
                     }
                 ],
@@ -951,7 +951,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Pic"
+                                    "$ref": "#/definitions/Order"
                                 },
                                 "message": {
                                     "type": "string"
@@ -964,10 +964,10 @@
             },
             "delete": {
                 "tags": [
-                    "Pic"
+                    "Order"
                 ],
-                "summary": "Remove the specified Pic from storage",
-                "description": "Delete Pic",
+                "summary": "Remove the specified Order from storage",
+                "description": "Delete Order",
                 "produces": [
                     "application/json"
                 ],
@@ -975,7 +975,206 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Pic",
+                        "description": "id of Order",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/permises": {
+            "get": {
+                "tags": [
+                    "Permise"
+                ],
+                "summary": "Get a listing of the Permises.",
+                "description": "Get all Permises",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Permise"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Permise"
+                ],
+                "summary": "Store a newly created Permise in storage",
+                "description": "Store Permise",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Permise that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Permise"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Permise"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/permises/{id}": {
+            "get": {
+                "tags": [
+                    "Permise"
+                ],
+                "summary": "Display the specified Permise",
+                "description": "Get Permise",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Permise",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Permise"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Permise"
+                ],
+                "summary": "Update the specified Permise in storage",
+                "description": "Update Permise",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Permise",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Permise that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Permise"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Permise"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Permise"
+                ],
+                "summary": "Remove the specified Permise from storage",
+                "description": "Delete Permise",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Permise",
                         "required": true,
                         "type": "integer"
                     }
@@ -1399,6 +1598,205 @@
                 }
             }
         },
+        "/productSales": {
+            "get": {
+                "tags": [
+                    "ProductSale"
+                ],
+                "summary": "Get a listing of the ProductSales.",
+                "description": "Get all ProductSales",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProductSale"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ProductSale"
+                ],
+                "summary": "Store a newly created ProductSale in storage",
+                "description": "Store ProductSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "ProductSale that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ProductSale"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/ProductSale"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/productSales/{id}": {
+            "get": {
+                "tags": [
+                    "ProductSale"
+                ],
+                "summary": "Display the specified ProductSale",
+                "description": "Get ProductSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of ProductSale",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/ProductSale"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ProductSale"
+                ],
+                "summary": "Update the specified ProductSale in storage",
+                "description": "Update ProductSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of ProductSale",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "ProductSale that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ProductSale"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/ProductSale"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ProductSale"
+                ],
+                "summary": "Remove the specified ProductSale from storage",
+                "description": "Delete ProductSale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of ProductSale",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/productTypes": {
             "get": {
                 "tags": [
@@ -1598,205 +1996,6 @@
                 }
             }
         },
-        "/productsSales": {
-            "get": {
-                "tags": [
-                    "ProductsSale"
-                ],
-                "summary": "Get a listing of the ProductsSales.",
-                "description": "Get all ProductsSales",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ProductsSale"
-                                    }
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "ProductsSale"
-                ],
-                "summary": "Store a newly created ProductsSale in storage",
-                "description": "Store ProductsSale",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "ProductsSale that should be stored",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/ProductsSale"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/ProductsSale"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/productsSales/{id}": {
-            "get": {
-                "tags": [
-                    "ProductsSale"
-                ],
-                "summary": "Display the specified ProductsSale",
-                "description": "Get ProductsSale",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of ProductsSale",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/ProductsSale"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "ProductsSale"
-                ],
-                "summary": "Update the specified ProductsSale in storage",
-                "description": "Update ProductsSale",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of ProductsSale",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "ProductsSale that should be updated",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/ProductsSale"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/ProductsSale"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "ProductsSale"
-                ],
-                "summary": "Remove the specified ProductsSale from storage",
-                "description": "Delete ProductsSale",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of ProductsSale",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "string"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/providers": {
             "get": {
                 "tags": [
@@ -1971,404 +2170,6 @@
                         "name": "id",
                         "in": "path",
                         "description": "id of Provider",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "string"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/requestBuys": {
-            "get": {
-                "tags": [
-                    "RequestBuy"
-                ],
-                "summary": "Get a listing of the RequestBuys.",
-                "description": "Get all RequestBuys",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/RequestBuy"
-                                    }
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "RequestBuy"
-                ],
-                "summary": "Store a newly created RequestBuy in storage",
-                "description": "Store RequestBuy",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "RequestBuy that should be stored",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/RequestBuy"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/RequestBuy"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/requestBuys/{id}": {
-            "get": {
-                "tags": [
-                    "RequestBuy"
-                ],
-                "summary": "Display the specified RequestBuy",
-                "description": "Get RequestBuy",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of RequestBuy",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/RequestBuy"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "RequestBuy"
-                ],
-                "summary": "Update the specified RequestBuy in storage",
-                "description": "Update RequestBuy",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of RequestBuy",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "RequestBuy that should be updated",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/RequestBuy"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/RequestBuy"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "RequestBuy"
-                ],
-                "summary": "Remove the specified RequestBuy from storage",
-                "description": "Delete RequestBuy",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of RequestBuy",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "string"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/requestBuyDetails": {
-            "get": {
-                "tags": [
-                    "RequestBuyDetail"
-                ],
-                "summary": "Get a listing of the RequestBuyDetails.",
-                "description": "Get all RequestBuyDetails",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/RequestBuyDetail"
-                                    }
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "RequestBuyDetail"
-                ],
-                "summary": "Store a newly created RequestBuyDetail in storage",
-                "description": "Store RequestBuyDetail",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "RequestBuyDetail that should be stored",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/RequestBuyDetail"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/RequestBuyDetail"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/requestBuyDetails/{id}": {
-            "get": {
-                "tags": [
-                    "RequestBuyDetail"
-                ],
-                "summary": "Display the specified RequestBuyDetail",
-                "description": "Get RequestBuyDetail",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of RequestBuyDetail",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/RequestBuyDetail"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "RequestBuyDetail"
-                ],
-                "summary": "Update the specified RequestBuyDetail in storage",
-                "description": "Update RequestBuyDetail",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of RequestBuyDetail",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "RequestBuyDetail that should be updated",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/RequestBuyDetail"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/RequestBuyDetail"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "RequestBuyDetail"
-                ],
-                "summary": "Remove the specified RequestBuyDetail from storage",
-                "description": "Delete RequestBuyDetail",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of RequestBuyDetail",
                         "required": true,
                         "type": "integer"
                     }
@@ -3009,6 +2810,26 @@
                 }
             }
         },
+        "Function": {
+            "required": [
+                ""
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "description",
+                    "type": "string"
+                }
+            }
+        },
         "Inventary": {
             "required": [
                 ""
@@ -3033,31 +2854,6 @@
                     "description": "amount",
                     "type": "integer",
                     "format": "int32"
-                },
-                "inventariestypes_id": {
-                    "description": "inventariestypes_id",
-                    "type": "integer",
-                    "format": "int32"
-                }
-            }
-        },
-        "InventaryType": {
-            "required": [
-                ""
-            ],
-            "properties": {
-                "id": {
-                    "description": "id",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "name": {
-                    "description": "name",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "description",
-                    "type": "string"
                 }
             }
         },
@@ -3086,7 +2882,40 @@
                 }
             }
         },
-        "Pic": {
+        "Order": {
+            "required": [
+                ""
+            ],
+            "properties": {
+                "users_id": {
+                    "description": "users_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "products_id": {
+                    "description": "products_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "time": {
+                    "description": "time",
+                    "type": "string"
+                },
+                "date": {
+                    "description": "date",
+                    "type": "string"
+                },
+                "amount": {
+                    "description": "amount",
+                    "type": "string"
+                },
+                "total": {
+                    "description": "total",
+                    "type": "string"
+                }
+            }
+        },
+        "Permise": {
             "required": [
                 ""
             ],
@@ -3096,18 +2925,31 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "caption": {
-                    "description": "caption",
-                    "type": "string"
-                },
-                "img": {
-                    "description": "img",
-                    "type": "string"
-                },
-                "products_id": {
-                    "description": "products_id",
+                "functionalities_id": {
+                    "description": "functionalities_id",
                     "type": "integer",
                     "format": "int32"
+                },
+                "userstypes_id": {
+                    "description": "userstypes_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "write": {
+                    "description": "write",
+                    "type": "string"
+                },
+                "delete": {
+                    "description": "delete",
+                    "type": "string"
+                },
+                "read": {
+                    "description": "read",
+                    "type": "string"
+                },
+                "edit": {
+                    "description": "edit",
+                    "type": "string"
                 }
             }
         },
@@ -3155,6 +2997,10 @@
                     "description": "productscategories_id",
                     "type": "integer",
                     "format": "int32"
+                },
+                "urlimage": {
+                    "description": "urlimage",
+                    "type": "string"
                 }
             }
         },
@@ -3174,27 +3020,7 @@
                 }
             }
         },
-        "ProductType": {
-            "required": [
-                ""
-            ],
-            "properties": {
-                "id": {
-                    "description": "id",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "name": {
-                    "description": "name",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "description",
-                    "type": "string"
-                }
-            }
-        },
-        "ProductsSale": {
+        "ProductSale": {
             "required": [
                 ""
             ],
@@ -3224,7 +3050,7 @@
                 }
             }
         },
-        "Provider": {
+        "ProductType": {
             "required": [
                 ""
             ],
@@ -3244,7 +3070,7 @@
                 }
             }
         },
-        "RequestBuy": {
+        "Provider": {
             "required": [
                 ""
             ],
@@ -3254,47 +3080,13 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "locals_id": {
-                    "description": "locals_id",
-                    "type": "integer",
-                    "format": "int32"
+                "name": {
+                    "description": "name",
+                    "type": "string"
                 },
-                "providers_id": {
-                    "description": "providers_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "total": {
-                    "description": "total",
-                    "type": "number",
-                    "format": "float"
-                }
-            }
-        },
-        "RequestBuyDetail": {
-            "required": [
-                ""
-            ],
-            "properties": {
-                "id": {
-                    "description": "id",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "requests_id": {
-                    "description": "requests_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "products_id": {
-                    "description": "products_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "amount": {
-                    "description": "amount",
-                    "type": "integer",
-                    "format": "int32"
+                "description": {
+                    "description": "description",
+                    "type": "string"
                 }
             }
         },
@@ -3386,26 +3178,6 @@
                 "description": {
                     "description": "description",
                     "type": "string"
-                },
-                "view": {
-                    "description": "view",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "edit": {
-                    "description": "edit",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "write": {
-                    "description": "write",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "delete": {
-                    "description": "delete",
-                    "type": "integer",
-                    "format": "int32"
                 }
             }
         }

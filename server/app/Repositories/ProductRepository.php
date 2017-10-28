@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class ProductRepository
  * @package App\Repositories
- * @version October 27, 2017, 5:26 am UTC
+ * @version October 28, 2017, 12:13 am UTC
  *
  * @method Product findWithoutFail($id, $columns = ['*'])
  * @method Product find($id, $columns = ['*'])
@@ -27,7 +27,8 @@ class ProductRepository extends BaseRepository
         'cost',
         'productstypes_id',
         'code',
-        'productscategories_id'
+        'productscategories_id',
+        'urlimage'
     ];
 
     /**

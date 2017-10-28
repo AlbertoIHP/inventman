@@ -43,11 +43,7 @@ trait MakeUserTypeTrait
 
         return array_merge([
             'name' => $fake->word,
-            'description' => $fake->word,
-            'view' => $fake->randomDigitNotNull,
-            'edit' => $fake->randomDigitNotNull,
-            'write' => $fake->randomDigitNotNull,
-            'delete' => $fake->randomDigitNotNull
+            'description' => $fake->word
         ], $userTypeFields);
     }
 }

@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
 	public function up()
 	{
 
-
+      //Modulo de Usuarios
 		Schema::table('users', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();
@@ -23,14 +23,20 @@ class CreateUsersTable extends Migration
 			$table->string('confirmation_code')->nullable();
 
 		});
-
-    Schema::table('productscategories', function (Blueprint $table) {
+		Schema::table('userstypes', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();
 			$table->timestamp('deleted_at')->nullable();
 
 		});
-		Schema::table('userstypes', function (Blueprint $table) {
+    Schema::table('permissions', function (Blueprint $table) {
+			$table->rememberToken();
+			$table->timestamps();
+			$table->timestamp('deleted_at')->nullable();
+
+		});
+
+    Schema::table('functionalities', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();
 			$table->timestamp('deleted_at')->nullable();
@@ -44,12 +50,38 @@ class CreateUsersTable extends Migration
 
 		});
 
-		Schema::table('requests', function (Blueprint $table) {
+    Schema::table('cities', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();
 			$table->timestamp('deleted_at')->nullable();
 
 		});
+
+
+      //Modulo Inventario y Pedidos
+
+		Schema::table('inventaries', function (Blueprint $table) {
+			$table->rememberToken();
+			$table->timestamps();
+			$table->timestamp('deleted_at')->nullable();
+
+		});
+
+		Schema::table('products', function (Blueprint $table) {
+			$table->rememberToken();
+			$table->timestamps();
+			$table->timestamp('deleted_at')->nullable();
+
+		});
+
+
+		Schema::table('orders', function (Blueprint $table) {
+			$table->rememberToken();
+			$table->timestamps();
+			$table->timestamp('deleted_at')->nullable();
+
+		});
+
 
 
 		Schema::table('providers', function (Blueprint $table) {
@@ -60,50 +92,7 @@ class CreateUsersTable extends Migration
 		});
 
 
-
-
-		Schema::table('products', function (Blueprint $table) {
-			$table->rememberToken();
-			$table->timestamps();
-			$table->timestamp('deleted_at')->nullable();
-
-		});
-
-
-		Schema::table('requestsdetails', function (Blueprint $table) {
-			$table->rememberToken();
-			$table->timestamps();
-			$table->timestamp('deleted_at')->nullable();
-
-		});
-
-
-
-		Schema::table('inventaries', function (Blueprint $table) {
-			$table->rememberToken();
-			$table->timestamps();
-			$table->timestamp('deleted_at')->nullable();
-
-		});
-
-
-		Schema::table('cities', function (Blueprint $table) {
-			$table->rememberToken();
-			$table->timestamps();
-			$table->timestamp('deleted_at')->nullable();
-
-		});
-
-
-		Schema::table('inventariestypes', function (Blueprint $table) {
-			$table->rememberToken();
-			$table->timestamps();
-			$table->timestamp('deleted_at')->nullable();
-
-		});
-
-
-		Schema::table('pics', function (Blueprint $table) {
+		Schema::table('productscategories', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();
 			$table->timestamp('deleted_at')->nullable();
@@ -118,8 +107,9 @@ class CreateUsersTable extends Migration
 
 		});
 
+      //Modulo de Ventas
 
-		Schema::table('sales', function (Blueprint $table) {
+		Schema::table('productssales', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();
 			$table->timestamp('deleted_at')->nullable();
@@ -127,8 +117,7 @@ class CreateUsersTable extends Migration
 		});
 
 
-
-		Schema::table('productssales', function (Blueprint $table) {
+		Schema::table('sales', function (Blueprint $table) {
 			$table->rememberToken();
 			$table->timestamps();
 			$table->timestamp('deleted_at')->nullable();

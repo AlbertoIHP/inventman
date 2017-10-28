@@ -35,60 +35,60 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Sale extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	public $table = 'sales';
-	
-	const CREATED_AT = 'created_at';
-	const UPDATED_AT = 'updated_at';
+    public $table = 'sales';
 
-
-	protected $dates = ['deleted_at'];
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
 
-	public $fillable = [
-		'date',
-		'description',
-		'users_id',
-		'totalsale'
-	];
+    protected $dates = ['deleted_at'];
 
-	/**
-	 * The attributes that should be casted to native types.
-	 *
-	 * @var array
-	 */
-	protected $casts = [
-		'id' => 'integer',
-		'description' => 'string',
-		'users_id' => 'integer',
-		'totalsale' => 'string'
-	];
 
-	/**
-	 * Validation rules
-	 *
-	 * @var array
-	 */
-	public static $rules = [
-		
-	];
+    public $fillable = [
+        'date',
+        'description',
+        'users_id',
+        'totalsale'
+    ];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 **/
-	public function user()
-	{
-		return $this->belongsTo(\App\Models\User::class);
-	}
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'description' => 'string',
+        'users_id' => 'integer',
+        'totalsale' => 'string'
+    ];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 **/
-	public function productssales()
-	{
-		return $this->hasMany(\App\Models\Productssale::class);
-	}
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function productssales()
+    {
+        return $this->hasMany(\App\Models\Productssale::class);
+    }
 
 	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

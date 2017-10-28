@@ -44,8 +44,7 @@ trait MakeInventaryTrait
         return array_merge([
             'locals_id' => $fake->randomDigitNotNull,
             'products_id' => $fake->randomDigitNotNull,
-            'amount' => $fake->randomDigitNotNull,
-            'inventariestypes_id' => $fake->randomDigitNotNull
+            'amount' => $fake->randomDigitNotNull
         ], $inventaryFields);
     }
 }

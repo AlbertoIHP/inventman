@@ -35,75 +35,67 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Local extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	public $table = 'locals';
-	
-	const CREATED_AT = 'created_at';
-	const UPDATED_AT = 'updated_at';
+    public $table = 'locals';
 
-
-	protected $dates = ['deleted_at'];
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
 
-	public $fillable = [
-		'address',
-		'name',
-		'city_id'
-	];
+    protected $dates = ['deleted_at'];
 
-	/**
-	 * The attributes that should be casted to native types.
-	 *
-	 * @var array
-	 */
-	protected $casts = [
-		'id' => 'integer',
-		'address' => 'string',
-		'name' => 'string',
-		'city_id' => 'integer'
-	];
 
-	/**
-	 * Validation rules
-	 *
-	 * @var array
-	 */
-	public static $rules = [
-		
-	];
+    public $fillable = [
+        'address',
+        'name',
+        'city_id'
+    ];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 **/
-	public function city()
-	{
-		return $this->belongsTo(\App\Models\City::class);
-	}
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'address' => 'string',
+        'name' => 'string',
+        'city_id' => 'integer'
+    ];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 **/
-	public function inventaries()
-	{
-		return $this->hasMany(\App\Models\Inventary::class);
-	}
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 **/
-	public function requests()
-	{
-		return $this->hasMany(\App\Models\Request::class);
-	}
+    ];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 **/
-	public function users()
-	{
-		return $this->hasMany(\App\Models\User::class);
-	}
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function city()
+    {
+        return $this->belongsTo(\App\Models\City::class);
+    }
 
-	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function inventaries()
+    {
+        return $this->hasMany(\App\Models\Inventary::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function users()
+    {
+        return $this->hasMany(\App\Models\User::class);
+    }
+
+    	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

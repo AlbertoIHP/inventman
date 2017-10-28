@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class CityRepository
  * @package App\Repositories
- * @version October 18, 2017, 12:08 pm UTC
+ * @version October 28, 2017, 12:12 am UTC
  *
  * @method City findWithoutFail($id, $columns = ['*'])
  * @method City find($id, $columns = ['*'])

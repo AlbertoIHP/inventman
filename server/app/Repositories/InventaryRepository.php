@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class InventaryRepository
  * @package App\Repositories
- * @version October 18, 2017, 12:09 pm UTC
+ * @version October 28, 2017, 12:12 am UTC
  *
  * @method Inventary findWithoutFail($id, $columns = ['*'])
  * @method Inventary find($id, $columns = ['*'])
@@ -22,8 +22,7 @@ class InventaryRepository extends BaseRepository
     protected $fieldSearchable = [
         'locals_id',
         'products_id',
-        'amount',
-        'inventariestypes_id'
+        'amount'
     ];
 
     /**

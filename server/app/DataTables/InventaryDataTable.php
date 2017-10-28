@@ -74,8 +74,7 @@ class InventaryDataTable extends DataTable
         return [
             'locals_id' => ['name' => 'locals_id', 'data' => 'locals_id'],
             'products_id' => ['name' => 'products_id', 'data' => 'products_id'],
-            'amount' => ['name' => 'amount', 'data' => 'amount'],
-            'inventariestypes_id' => ['name' => 'inventariestypes_id', 'data' => 'inventariestypes_id']
+            'amount' => ['name' => 'amount', 'data' => 'amount']
         ];
     }
 

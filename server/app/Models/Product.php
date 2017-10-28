@@ -57,6 +57,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          description="productscategories_id",
  *          type="integer",
  *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="urlimage",
+ *          description="urlimage",
+ *          type="string"
  *      )
  * )
  */
@@ -81,7 +86,8 @@ class Product extends Model
         'cost',
         'productstypes_id',
         'code',
-        'productscategories_id'
+        'productscategories_id',
+        'urlimage'
     ];
 
     /**
@@ -98,7 +104,8 @@ class Product extends Model
         'cost' => 'string',
         'productstypes_id' => 'integer',
         'code' => 'string',
-        'productscategories_id' => 'integer'
+        'productscategories_id' => 'integer',
+        'urlimage' => 'string'
     ];
 
     /**
@@ -143,11 +150,11 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function pics()
+    public function users()
     {
-        return $this->hasMany(\App\Models\Pic::class);
+        return $this->belongsToMany(\App\Models\User::class, 'orders');
     }
 
     /**
@@ -158,13 +165,6 @@ class Product extends Model
         return $this->hasMany(\App\Models\Productssale::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function requestsdetails()
-    {
-        return $this->hasMany(\App\Models\Requestsdetail::class);
-    }
 
-	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
+    	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }
