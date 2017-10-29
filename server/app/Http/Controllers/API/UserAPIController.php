@@ -110,6 +110,7 @@ class UserAPIController extends AppBaseController
     {
         $input = $request->all();
 
+        $input["password"] = bcrypt($input["password"]);
         $users = $this->userRepository->create($input);
 
         return $this->sendResponse($users->toArray(), 'User saved successfully');
@@ -214,7 +215,7 @@ class UserAPIController extends AppBaseController
     public function update($id, UpdateUserAPIRequest $request)
     {
         $input = $request->all();
-
+        $input["password"] = bcrypt($input["password"]);
         /** @var User $user */
         $user = $this->userRepository->findWithoutFail($id);
 

@@ -9,7 +9,9 @@ import Home from '@/components/Home'
 import Actividad from '@/components/Actividad'
 import Inventario from '@/components/Inventario'
 import Login from '@/components/Login'
-
+import InventaryModule from '@/components/Modules/InventaryModule'
+import SellModule from '@/components/Modules/SellModule'
+import UserModule from '@/components/Modules/UserModule'
 //Entregamos a Vue el componente de rutas para que este lo utilice en todos los sub componentes, o todos aquellos que utilicen esta instancia
 Vue.use(Router)
 
@@ -26,6 +28,21 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/home/um',
+      name: 'UserModule',
+      component: UserModule
+    },
+    {
+      path: '/home/im',
+      name: 'InventaryModule',
+      component: InventaryModule
+    },
+    {
+      path: '/home/sm',
+      name: 'SellModule',
+      component: SellModule
     },
     {
       path: '/inventario',

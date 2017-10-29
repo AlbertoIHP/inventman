@@ -1,15 +1,17 @@
 <template>
   <section>
-    <p>Home works!</p>
+<p>home works</p>
   </section>
 </template>
 
 
 <script>
   export default {
-    data:  ({
-
-    }),
+    data(){
+      return {
+        hello: "hello"
+      }
+    },
     methods:
     {
 

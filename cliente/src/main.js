@@ -19,8 +19,13 @@ import { LocalStorageCredentialsService } from './services';
 //Las constantes en este caso son variables que no cambian en toda la ejecucion del codigo
 import {address} from './constants'
 
-//Libreria para conectarnos a APIs y consumirlas
+//Traemos resource par aconsumir APIs
 import VueResource from 'vue-resource'
+
+
+//Usamos la librerai
+Vue.use(VueResource)
+
 
 //Instanciamos la clase de credenciales para poder ocupar sus metodos mediante un objeto
 const credentials = new LocalStorageCredentialsService()
@@ -29,8 +34,7 @@ const credentials = new LocalStorageCredentialsService()
 // ProductionTip no dice mucho en la documentacion
 Vue.config.productionTip = false
 
-//Le entregamos a la instancia de Vue los recursos para consumir la API
-Vue.use(VueResource)
+
 
 
 

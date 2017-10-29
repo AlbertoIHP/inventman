@@ -1,5 +1,5 @@
 //Importamos las direcciones declaradas como constantes
-import {address} from '@/constants/address.js'
+import { address } from '@/constants/address.js'
 
 //La instancia de Vue
 import Vue from 'vue'
@@ -20,6 +20,7 @@ class ApiConnect
   constructor (route)
   {
     //Como usamos resource de la instancia de Vue, nose genera todos los metodos HTTP para consumir una API mediatne el metodo query, del objeto que esta genera. resource solo necesita la direccion de la api para poder ser instanciada
+    this.endpoint = address.api + route
     this.resource = Vue.resource(address.api + route)
   }
 
@@ -29,6 +30,10 @@ class ApiConnect
     return this.resource
   }
 
+  getEndpoint()
+  {
+    return this.endpoint
+  }
 
   //query
   query ()

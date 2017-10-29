@@ -1,7 +1,7 @@
   <!-- Esta seccion del componente View, hace referencia al HTML-->
 <template>
   <section>
-    <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
+    <md-sidenav class="md-left" ref="inventaryMenu" @open="open('Left')" @close="close('Left')">
       <md-toolbar >
         <div class="md-toolbar-container">
             <md-layout md-gutter>
@@ -34,10 +34,24 @@
 
     </md-sidenav>
 
-    <md-toolbar>
-      <md-button  v-if="isInventario" class="md-icon-button" @click="toggleLeftSidenav">
+    <md-sidenav class="md-left" ref="homeMenu" @open="open('Left')" @close="close('Left')">
+            <md-button class="botonSinBordes" @click="ir('um')"  style="text-align: left" >Modulo de Usuarios</md-button>
+            <md-button class="botonSinBordes" @click="ir('im')" style="text-align: left" >Modulo de Inventario y Pedidos</md-button>
+            <md-button class="botonSinBordes" @click="ir('sm')" style="text-align: left" >Modulo de Ventas</md-button>
+    </md-sidenav>
+
+
+
+
+
+    <md-toolbar style="background-color: grey">
+      <md-button  v-if="isInventario" class="md-icon-button" @click="openSideNav('inventary')">
         <md-icon>menu</md-icon>
       </md-button>
+      <md-button  v-if="isHome" class="md-icon-button" @click="openSideNav('home')">
+        <md-icon>menu</md-icon>
+      </md-button>
+
       <md-button-toggle md-single style="heigth: 100%">
         <md-button  @click="goHome()" style="color: white">Home</md-button>
         <md-button  @click="goInventario()" style="color: white">Inventario</md-button>
@@ -79,6 +93,7 @@
     data () {
       return {
         isInventario: false,
+        isHome: false,
         categorias: [],
         productos: [],
         buscar: ""
@@ -91,24 +106,51 @@
       {
         this.$router.push('/home')
         this.isInventario = false
+        this.isHome = true
+      },
+      ir(lugar)
+      {
+        if(lugar === 'um')
+        {
+          this.$router.push('/home/um')
+        }
+        else if(lugar === 'im')
+        {
+          this.$router.push('/home/im')
+        }
+        else if( lugar === 'sm')
+        {
+          this.$router.push('/home/sm')
+        }
+
       },
       goInventario()
       {
         this.$router.push('/inventario')
         this.isInventario = true
+        this.isHome =false
       },
       goActividad()
       {
         this.$router.push('/actividad')
         this.isInventario = false
+        this.isHome = false
       },
       cerrarSesion()
       {
         this.$router.push('/')
         this.isInventario = false;
       },
-      toggleLeftSidenav() {
-        this.$refs.leftSidenav.toggle();
+      openSideNav(reference) {
+        if(reference === 'inventary')
+        {
+          this.$refs.inventaryMenu.toggle();
+        }
+        else if(reference === 'home')
+        {
+          this.$refs.homeMenu.toggle();
+        }
+
       },
       open(ref) {
         console.log('Opened: ' + ref);

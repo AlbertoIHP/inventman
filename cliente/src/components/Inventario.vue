@@ -162,7 +162,7 @@
       organizarArreglo()
       {
 
-        this.arregloAuxiliar = [];
+        this.arregloAuxiliar = []
         var cont = 0
         for (let x = 0 ; x < this.productosMostrar.length ; x = x + 2)
         {
@@ -233,9 +233,9 @@
 .imagenProducto
 {
   width: 100%;
-   height: 105px;
+   height: 202px;
     max-width: 100%;
-    max-height: 150px;
+    max-height: 202px;
 }
 
 .tarjetaProducto
