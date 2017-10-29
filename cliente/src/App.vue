@@ -1,8 +1,8 @@
   <!-- Esta seccion del componente View, hace referencia al HTML-->
 <template>
   <section>
-    <md-sidenav class="md-left" ref="inventaryMenu" @open="open('Left')" @close="close('Left')">
-      <md-toolbar >
+    <md-sidenav class="md-left" ref="inventaryMenu" @open="open('Left')" @close="close('Left')" >
+      <md-toolbar style="background-color: grey">
         <div class="md-toolbar-container">
             <md-layout md-gutter>
               <md-layout md-flex="80">
@@ -44,7 +44,7 @@
 
 
 
-    <md-toolbar style="background-color: grey">
+    <md-toolbar class="fixedToolbar"style="background-color: grey">
       <md-button  v-if="isInventario" class="md-icon-button" @click="openSideNav('inventary')">
         <md-icon>menu</md-icon>
       </md-button>
@@ -72,7 +72,7 @@
     </md-toolbar>
 
 
-    <router-view></router-view>
+    <router-view class="contenidoBajoToolbar"></router-view>
 
 
 
@@ -208,5 +208,19 @@
   margin-bottom: 0%;
   width: 100%;
   background-color: white;
+}
+
+.fixedToolbar
+{
+  background-color: grey;
+  position: fixed;
+  width: 100%;
+  margin-top: -0.4%;
+  z-index: 9;
+}
+
+.contenidoBajoToolbar
+{
+  padding-top: 57px
 }
 </style>

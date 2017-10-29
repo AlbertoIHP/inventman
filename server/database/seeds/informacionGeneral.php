@@ -451,10 +451,19 @@ class informacionGeneral extends Seeder
 	// MODULO DE VENTAS
 
 	DB::table('sales')->insert([
-	  'date' => Carbon::create('2017', '02', '01'),
+	  'date' => "21/10/1995",
 	  'description' => 'Venta de muchas cosas',
 	  'users_id' => 1,
-	  'totalsale' => '25000'
+	  'totalsale' => '25000',
+    'time' => '22:45 AM'
+	]);
+
+  DB::table('sales')->insert([
+	  'date' => "21/10/1995",
+	  'description' => 'Venta de muchas cosas',
+	  'users_id' => 1,
+	  'totalsale' => '25000',
+    'time' => '22:45 AM'
 	]);
 
 	DB::table('productssales')->insert([
@@ -464,7 +473,12 @@ class informacionGeneral extends Seeder
 	  'total' => '5000'
 	]);
 
-
+  DB::table('productssales')->insert([
+	  'sales_id' => 2,
+	  'products_id' => 2,
+	  'amount' => '5',
+	  'total' => '5000'
+	]);
 
 
 

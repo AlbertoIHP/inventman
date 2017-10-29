@@ -4,11 +4,6 @@
       <md-tab id="sales" md-label="Ventas">
           <sales></sales>
       </md-tab>
-
-      <md-tab id="prodsale" md-label="Detalles de venta">
-       <prodsale></prodsale>
-      </md-tab>
-
     </md-tabs>
   </section>
 </template>

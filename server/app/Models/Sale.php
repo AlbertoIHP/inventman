@@ -16,6 +16,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
+ *          property="date",
+ *          description="date",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
  *          property="description",
  *          description="description",
  *          type="string"
@@ -30,6 +35,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          property="totalsale",
  *          description="totalsale",
  *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="time",
+ *          description="time",
+ *          type="string"
  *      )
  * )
  */
@@ -38,7 +48,7 @@ class Sale extends Model
     use SoftDeletes;
 
     public $table = 'sales';
-
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -50,7 +60,8 @@ class Sale extends Model
         'date',
         'description',
         'users_id',
-        'totalsale'
+        'totalsale',
+        'time'
     ];
 
     /**
@@ -60,9 +71,11 @@ class Sale extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'date' => 'string',
         'description' => 'string',
         'users_id' => 'integer',
-        'totalsale' => 'string'
+        'totalsale' => 'string',
+        'time' => 'string'
     ];
 
     /**
@@ -71,7 +84,7 @@ class Sale extends Model
      * @var array
      */
     public static $rules = [
-
+        
     ];
 
     /**
@@ -89,6 +102,4 @@ class Sale extends Model
     {
         return $this->hasMany(\App\Models\Productssale::class);
     }
-
-	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

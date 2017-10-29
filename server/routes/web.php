@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 
 Auth::routes();
+
+
+Route::resource('sales', 'SaleController');

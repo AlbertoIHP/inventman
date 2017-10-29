@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class SaleRepository
  * @package App\Repositories
- * @version October 28, 2017, 12:14 am UTC
+ * @version October 29, 2017, 8:19 am UTC
  *
  * @method Sale findWithoutFail($id, $columns = ['*'])
  * @method Sale find($id, $columns = ['*'])
@@ -23,7 +23,8 @@ class SaleRepository extends BaseRepository
         'date',
         'description',
         'users_id',
-        'totalsale'
+        'totalsale',
+        'time'
     ];
 
     /**

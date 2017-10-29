@@ -45,3 +45,6 @@ Route::resource('v1/functionalities', 'FunctionalityAPIController');
 	Route::resource('v1/sales', 'SaleAPIController');
 
 });
+
+
+Route::resource('sales', 'SaleAPIController');

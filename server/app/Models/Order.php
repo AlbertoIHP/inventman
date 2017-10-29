@@ -10,6 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      definition="Order",
  *      required={""},
  *      @SWG\Property(
+ *          property="id",
+ *          description="id",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
  *          property="users_id",
  *          description="users_id",
  *          type="integer",
@@ -48,7 +54,7 @@ class Order extends Model
     use SoftDeletes;
 
     public $table = 'orders';
-
+    
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -57,6 +63,7 @@ class Order extends Model
 
 
     public $fillable = [
+        'users_id',
         'products_id',
         'time',
         'date',
@@ -70,6 +77,7 @@ class Order extends Model
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
         'users_id' => 'integer',
         'products_id' => 'integer',
         'time' => 'string',
@@ -84,7 +92,7 @@ class Order extends Model
      * @var array
      */
     public static $rules = [
-
+        
     ];
 
     /**
@@ -102,6 +110,4 @@ class Order extends Model
     {
         return $this->belongsTo(\App\Models\User::class);
     }
-
-    	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

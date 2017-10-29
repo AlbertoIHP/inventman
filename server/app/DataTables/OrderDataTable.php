@@ -72,6 +72,7 @@ class OrderDataTable extends DataTable
     private function getColumns()
     {
         return [
+            'users_id' => ['name' => 'users_id', 'data' => 'users_id'],
             'products_id' => ['name' => 'products_id', 'data' => 'products_id'],
             'time' => ['name' => 'time', 'data' => 'time'],
             'date' => ['name' => 'date', 'data' => 'date'],

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <p>WORks</p>
+    <p>Detail Sale Works!</p>
   </section>
 </template>
 

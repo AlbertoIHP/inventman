@@ -75,7 +75,8 @@ class SaleDataTable extends DataTable
             'date' => ['name' => 'date', 'data' => 'date'],
             'description' => ['name' => 'description', 'data' => 'description'],
             'users_id' => ['name' => 'users_id', 'data' => 'users_id'],
-            'totalsale' => ['name' => 'totalsale', 'data' => 'totalsale']
+            'totalsale' => ['name' => 'totalsale', 'data' => 'totalsale'],
+            'time' => ['name' => 'time', 'data' => 'time']
         ];
     }
 

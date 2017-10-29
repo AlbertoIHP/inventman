@@ -42,10 +42,11 @@ trait MakeSaleTrait
         $fake = Faker::create();
 
         return array_merge([
-            'date' => $fake->date('Y-m-d H:i:s'),
+            'date' => $fake->word,
             'description' => $fake->word,
             'users_id' => $fake->randomDigitNotNull,
-            'totalsale' => $fake->word
+            'totalsale' => $fake->word,
+            'time' => $fake->word
         ], $saleFields);
     }
 }
