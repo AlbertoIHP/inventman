@@ -93,7 +93,7 @@
     data () {
       return {
         isInventario: false,
-        isHome: false,
+        isHome: true,
         categorias: [],
         productos: [],
         buscar: ""

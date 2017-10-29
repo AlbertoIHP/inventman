@@ -22,10 +22,10 @@
     <p>{!! $permise->write !!}</p>
 </div>
 
-<!-- Delete Field -->
+<!-- Erase Field -->
 <div class="form-group">
-    {!! Form::label('delete', 'Delete:') !!}
-    <p>{!! $permise->delete !!}</p>
+    {!! Form::label('erase', 'Erase:') !!}
+    <p>{!! $permise->erase !!}</p>
 </div>
 
 <!-- Read Field -->

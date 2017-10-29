@@ -135,7 +135,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 1,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -144,7 +144,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 2,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -153,7 +153,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 3,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -162,7 +162,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 4,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -171,7 +171,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 5,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -180,7 +180,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 6,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -189,7 +189,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 7,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -198,7 +198,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 8,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -207,7 +207,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 9,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -217,7 +217,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 10,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -227,7 +227,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 11,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -236,7 +236,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 12,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);
@@ -245,7 +245,7 @@ class informacionGeneral extends Seeder
   	  'functionalities_id' => 13,
   	  'userstypes_id' => 1,
         'write' => '1',
-        'delete' => '1',
+        'erase' => '1',
         'read'=> '1',
         'edit' => '1',
   	]);

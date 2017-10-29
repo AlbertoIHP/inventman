@@ -45,7 +45,7 @@ trait MakePermiseTrait
             'functionalities_id' => $fake->randomDigitNotNull,
             'userstypes_id' => $fake->randomDigitNotNull,
             'write' => $fake->word,
-            'delete' => $fake->word,
+            'erase' => $fake->word,
             'read' => $fake->word,
             'edit' => $fake->word
         ], $permiseFields);

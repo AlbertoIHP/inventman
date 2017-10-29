@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreateFunctionAPIRequest;
-use App\Http\Requests\API\UpdateFunctionAPIRequest;
-use App\Models\Function;
-use App\Repositories\FunctionRepository;
+use App\Http\Requests\API\CreateFunctionalityAPIRequest;
+use App\Http\Requests\API\UpdateFunctionalityAPIRequest;
+use App\Models\Functionality;
+use App\Repositories\FunctionalityRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
@@ -13,18 +13,18 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
 /**
- * Class FunctionController
+ * Class FunctionalityController
  * @package App\Http\Controllers\API
  */
 
-class FunctionAPIController extends AppBaseController
+class FunctionalityAPIController extends AppBaseController
 {
-    /** @var  FunctionRepository */
-    private $functionRepository;
+    /** @var  FunctionalityRepository */
+    private $functionalityRepository;
 
-    public function __construct(FunctionRepository $functionRepo)
+    public function __construct(FunctionalityRepository $functionalityRepo)
     {
-        $this->functionRepository = $functionRepo;
+        $this->functionalityRepository = $functionalityRepo;
     }
 
     /**
@@ -32,10 +32,10 @@ class FunctionAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/functions",
-     *      summary="Get a listing of the Functions.",
-     *      tags={"Function"},
-     *      description="Get all Functions",
+     *      path="/functionalities",
+     *      summary="Get a listing of the Functionalities.",
+     *      tags={"Functionality"},
+     *      description="Get all Functionalities",
      *      produces={"application/json"},
      *      @SWG\Response(
      *          response=200,
@@ -49,7 +49,7 @@ class FunctionAPIController extends AppBaseController
      *              @SWG\Property(
      *                  property="data",
      *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/Function")
+     *                  @SWG\Items(ref="#/definitions/Functionality")
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -61,29 +61,29 @@ class FunctionAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->functionRepository->pushCriteria(new RequestCriteria($request));
-        $this->functionRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $functions = $this->functionRepository->all();
+        $this->functionalityRepository->pushCriteria(new RequestCriteria($request));
+        $this->functionalityRepository->pushCriteria(new LimitOffsetCriteria($request));
+        $functionalities = $this->functionalityRepository->all();
 
-        return $this->sendResponse($functions->toArray(), 'Functions retrieved successfully');
+        return $this->sendResponse($functionalities->toArray(), 'Functionalities retrieved successfully');
     }
 
     /**
-     * @param CreateFunctionAPIRequest $request
+     * @param CreateFunctionalityAPIRequest $request
      * @return Response
      *
      * @SWG\Post(
-     *      path="/functions",
-     *      summary="Store a newly created Function in storage",
-     *      tags={"Function"},
-     *      description="Store Function",
+     *      path="/functionalities",
+     *      summary="Store a newly created Functionality in storage",
+     *      tags={"Functionality"},
+     *      description="Store Functionality",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Function that should be stored",
+     *          description="Functionality that should be stored",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Function")
+     *          @SWG\Schema(ref="#/definitions/Functionality")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -96,7 +96,7 @@ class FunctionAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Function"
+     *                  ref="#/definitions/Functionality"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -106,13 +106,13 @@ class FunctionAPIController extends AppBaseController
      *      )
      * )
      */
-    public function store(CreateFunctionAPIRequest $request)
+    public function store(CreateFunctionalityAPIRequest $request)
     {
         $input = $request->all();
 
-        $functions = $this->functionRepository->create($input);
+        $functionalities = $this->functionalityRepository->create($input);
 
-        return $this->sendResponse($functions->toArray(), 'Function saved successfully');
+        return $this->sendResponse($functionalities->toArray(), 'Functionality saved successfully');
     }
 
     /**
@@ -120,14 +120,14 @@ class FunctionAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/functions/{id}",
-     *      summary="Display the specified Function",
-     *      tags={"Function"},
-     *      description="Get Function",
+     *      path="/functionalities/{id}",
+     *      summary="Display the specified Functionality",
+     *      tags={"Functionality"},
+     *      description="Get Functionality",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Function",
+     *          description="id of Functionality",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -143,7 +143,7 @@ class FunctionAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Function"
+     *                  ref="#/definitions/Functionality"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -155,30 +155,30 @@ class FunctionAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Function $function */
-        $function = $this->functionRepository->findWithoutFail($id);
+        /** @var Functionality $functionality */
+        $functionality = $this->functionalityRepository->findWithoutFail($id);
 
-        if (empty($function)) {
-            return $this->sendError('Function not found');
+        if (empty($functionality)) {
+            return $this->sendError('Functionality not found');
         }
 
-        return $this->sendResponse($function->toArray(), 'Function retrieved successfully');
+        return $this->sendResponse($functionality->toArray(), 'Functionality retrieved successfully');
     }
 
     /**
      * @param int $id
-     * @param UpdateFunctionAPIRequest $request
+     * @param UpdateFunctionalityAPIRequest $request
      * @return Response
      *
      * @SWG\Put(
-     *      path="/functions/{id}",
-     *      summary="Update the specified Function in storage",
-     *      tags={"Function"},
-     *      description="Update Function",
+     *      path="/functionalities/{id}",
+     *      summary="Update the specified Functionality in storage",
+     *      tags={"Functionality"},
+     *      description="Update Functionality",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Function",
+     *          description="id of Functionality",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -186,9 +186,9 @@ class FunctionAPIController extends AppBaseController
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Function that should be updated",
+     *          description="Functionality that should be updated",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Function")
+     *          @SWG\Schema(ref="#/definitions/Functionality")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -201,7 +201,7 @@ class FunctionAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Function"
+     *                  ref="#/definitions/Functionality"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -211,20 +211,20 @@ class FunctionAPIController extends AppBaseController
      *      )
      * )
      */
-    public function update($id, UpdateFunctionAPIRequest $request)
+    public function update($id, UpdateFunctionalityAPIRequest $request)
     {
         $input = $request->all();
 
-        /** @var Function $function */
-        $function = $this->functionRepository->findWithoutFail($id);
+        /** @var Functionality $functionality */
+        $functionality = $this->functionalityRepository->findWithoutFail($id);
 
-        if (empty($function)) {
-            return $this->sendError('Function not found');
+        if (empty($functionality)) {
+            return $this->sendError('Functionality not found');
         }
 
-        $function = $this->functionRepository->update($input, $id);
+        $functionality = $this->functionalityRepository->update($input, $id);
 
-        return $this->sendResponse($function->toArray(), 'Function updated successfully');
+        return $this->sendResponse($functionality->toArray(), 'Functionality updated successfully');
     }
 
     /**
@@ -232,14 +232,14 @@ class FunctionAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Delete(
-     *      path="/functions/{id}",
-     *      summary="Remove the specified Function from storage",
-     *      tags={"Function"},
-     *      description="Delete Function",
+     *      path="/functionalities/{id}",
+     *      summary="Remove the specified Functionality from storage",
+     *      tags={"Functionality"},
+     *      description="Delete Functionality",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Function",
+     *          description="id of Functionality",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -267,15 +267,15 @@ class FunctionAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Function $function */
-        $function = $this->functionRepository->findWithoutFail($id);
+        /** @var Functionality $functionality */
+        $functionality = $this->functionalityRepository->findWithoutFail($id);
 
-        if (empty($function)) {
-            return $this->sendError('Function not found');
+        if (empty($functionality)) {
+            return $this->sendError('Functionality not found');
         }
 
-        $function->delete();
+        $functionality->delete();
 
-        return $this->sendResponse($id, 'Function deleted successfully');
+        return $this->sendResponse($id, 'Functionality deleted successfully');
     }
 }

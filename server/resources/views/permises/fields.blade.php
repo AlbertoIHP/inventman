@@ -16,10 +16,10 @@
     {!! Form::text('write', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Delete Field -->
+<!-- Erase Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('delete', 'Delete:') !!}
-    {!! Form::text('delete', null, ['class' => 'form-control']) !!}
+    {!! Form::label('erase', 'Erase:') !!}
+    {!! Form::text('erase', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Read Field -->

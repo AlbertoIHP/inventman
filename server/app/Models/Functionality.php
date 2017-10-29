@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="Function",
+ *      definition="Functionality",
  *      required={""},
  *      @SWG\Property(
  *          property="id",
@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class Function extends Model
+class Functionality extends Model
 {
     use SoftDeletes;
 
@@ -66,13 +66,12 @@ class Function extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function userstypes()
+    public function permissions()
     {
-        return $this->belongsToMany(\App\Models\Userstype::class, 'permissions');
+        return $this->hasMany(\App\Models\Permission::class);
     }
-
 
     	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

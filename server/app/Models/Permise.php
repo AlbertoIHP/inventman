@@ -33,8 +33,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="delete",
- *          description="delete",
+ *          property="erase",
+ *          description="erase",
  *          type="string"
  *      ),
  *      @SWG\Property(
@@ -66,7 +66,7 @@ class Permise extends Model
         'functionalities_id',
         'userstypes_id',
         'write',
-        'delete',
+        'erase',
         'read',
         'edit'
     ];
@@ -81,7 +81,7 @@ class Permise extends Model
         'functionalities_id' => 'integer',
         'userstypes_id' => 'integer',
         'write' => 'string',
-        'delete' => 'string',
+        'erase' => 'string',
         'read' => 'string',
         'edit' => 'string'
     ];
@@ -111,5 +111,5 @@ class Permise extends Model
         return $this->belongsTo(\App\Models\Userstype::class);
     }
 
-    	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
+        	protected $hidden = ['remember_token', 'updated_at', 'created_at', 'deleted_at'];	
 }

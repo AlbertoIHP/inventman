@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\API;
 
-use App\Models\Function;
+use App\Models\Functionality;
 use InfyOm\Generator\Request\APIRequest;
 
-class CreateFunctionAPIRequest extends APIRequest
+class CreateFunctionalityAPIRequest extends APIRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,6 @@ class CreateFunctionAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return Function::$rules;
+        return Functionality::$rules;
     }
 }

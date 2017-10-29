@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class PermiseRepository
  * @package App\Repositories
- * @version October 28, 2017, 12:54 am UTC
+ * @version October 29, 2017, 4:31 am UTC
  *
  * @method Permise findWithoutFail($id, $columns = ['*'])
  * @method Permise find($id, $columns = ['*'])
@@ -23,7 +23,7 @@ class PermiseRepository extends BaseRepository
         'functionalities_id',
         'userstypes_id',
         'write',
-        'delete',
+        'erase',
         'read',
         'edit'
     ];

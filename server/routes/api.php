@@ -16,7 +16,7 @@ Route::group(['middleware' => ['cors']], function(){
 
 	//Estamos en desarrollo por lo que todas las rutas se dejan libre de token
 
-	Route::resource('v1/functions', 'FunctionAPIController');
+Route::resource('v1/functionalities', 'FunctionalityAPIController');
 
 	Route::resource('v1/permises', 'PermiseAPIController');
 

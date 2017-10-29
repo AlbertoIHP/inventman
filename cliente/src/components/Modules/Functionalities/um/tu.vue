@@ -140,6 +140,7 @@
 <script>
   import { ApiConnect } from '@/services'
   const servicioUT = new ApiConnect('userTypes')
+  const servicioPermisos = new ApiConnect('permises')
 
   import pu from '@/components/Modules/Functionalities/um/pu'
 
@@ -207,7 +208,9 @@
       irPermisos(ut)
       {
         localStorage.setItem('currentUT', JSON.stringify(ut))
+        console.log("Emito el evento!")
         this.$refs['viewPermissions'].open()
+        this.$root.$emit("actualizarUT")
       }
     }
   }

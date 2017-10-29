@@ -205,13 +205,13 @@
                 }
             }
         },
-        "/functions": {
+        "/functionalities": {
             "get": {
                 "tags": [
-                    "Function"
+                    "Functionality"
                 ],
-                "summary": "Get a listing of the Functions.",
-                "description": "Get all Functions",
+                "summary": "Get a listing of the Functionalities.",
+                "description": "Get all Functionalities",
                 "produces": [
                     "application/json"
                 ],
@@ -226,7 +226,7 @@
                                 "data": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/Function"
+                                        "$ref": "#/definitions/Functionality"
                                     }
                                 },
                                 "message": {
@@ -240,10 +240,10 @@
             },
             "post": {
                 "tags": [
-                    "Function"
+                    "Functionality"
                 ],
-                "summary": "Store a newly created Function in storage",
-                "description": "Store Function",
+                "summary": "Store a newly created Functionality in storage",
+                "description": "Store Functionality",
                 "produces": [
                     "application/json"
                 ],
@@ -251,10 +251,10 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Function that should be stored",
+                        "description": "Functionality that should be stored",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/Function"
+                            "$ref": "#/definitions/Functionality"
                         }
                     }
                 ],
@@ -267,7 +267,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Function"
+                                    "$ref": "#/definitions/Functionality"
                                 },
                                 "message": {
                                     "type": "string"
@@ -279,13 +279,13 @@
                 }
             }
         },
-        "/functions/{id}": {
+        "/functionalities/{id}": {
             "get": {
                 "tags": [
-                    "Function"
+                    "Functionality"
                 ],
-                "summary": "Display the specified Function",
-                "description": "Get Function",
+                "summary": "Display the specified Functionality",
+                "description": "Get Functionality",
                 "produces": [
                     "application/json"
                 ],
@@ -293,7 +293,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Function",
+                        "description": "id of Functionality",
                         "required": true,
                         "type": "integer"
                     }
@@ -307,7 +307,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Function"
+                                    "$ref": "#/definitions/Functionality"
                                 },
                                 "message": {
                                     "type": "string"
@@ -320,10 +320,10 @@
             },
             "put": {
                 "tags": [
-                    "Function"
+                    "Functionality"
                 ],
-                "summary": "Update the specified Function in storage",
-                "description": "Update Function",
+                "summary": "Update the specified Functionality in storage",
+                "description": "Update Functionality",
                 "produces": [
                     "application/json"
                 ],
@@ -331,17 +331,17 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Function",
+                        "description": "id of Functionality",
                         "required": true,
                         "type": "integer"
                     },
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Function that should be updated",
+                        "description": "Functionality that should be updated",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/Function"
+                            "$ref": "#/definitions/Functionality"
                         }
                     }
                 ],
@@ -354,7 +354,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Function"
+                                    "$ref": "#/definitions/Functionality"
                                 },
                                 "message": {
                                     "type": "string"
@@ -367,10 +367,10 @@
             },
             "delete": {
                 "tags": [
-                    "Function"
+                    "Functionality"
                 ],
-                "summary": "Remove the specified Function from storage",
-                "description": "Delete Function",
+                "summary": "Remove the specified Functionality from storage",
+                "description": "Delete Functionality",
                 "produces": [
                     "application/json"
                 ],
@@ -378,7 +378,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Function",
+                        "description": "id of Functionality",
                         "required": true,
                         "type": "integer"
                     }
@@ -2810,7 +2810,7 @@
                 }
             }
         },
-        "Function": {
+        "Functionality": {
             "required": [
                 ""
             ],
@@ -2939,8 +2939,8 @@
                     "description": "write",
                     "type": "string"
                 },
-                "delete": {
-                    "description": "delete",
+                "erase": {
+                    "description": "erase",
                     "type": "string"
                 },
                 "read": {
