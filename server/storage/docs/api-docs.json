@@ -2887,6 +2887,11 @@
                 ""
             ],
             "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
                 "users_id": {
                     "description": "users_id",
                     "type": "integer",
@@ -3100,6 +3105,10 @@
                     "type": "integer",
                     "format": "int32"
                 },
+                "date": {
+                    "description": "date",
+                    "type": "string"
+                },
                 "description": {
                     "description": "description",
                     "type": "string"
@@ -3111,6 +3120,10 @@
                 },
                 "totalsale": {
                     "description": "totalsale",
+                    "type": "string"
+                },
+                "time": {
+                    "description": "time",
                     "type": "string"
                 }
             }

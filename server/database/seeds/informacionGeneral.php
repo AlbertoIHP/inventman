@@ -443,7 +443,8 @@ class informacionGeneral extends Seeder
 	  'products_id' => 1,
 	  'amount' => 20,
 		'time' => '11:55 AM',
-		'date' =>'24/10/1996'
+		'date' =>'24/10/1996',
+      'total' => '123123'
 	]);
 
 
