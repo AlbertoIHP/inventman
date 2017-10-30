@@ -129,7 +129,8 @@
           this.tipos =data.body.data;
         })
 
-        this.buscar("")
+
+        this.buscar()
       }
       else
       {
@@ -158,13 +159,17 @@
       buscar()
       {
         var tipo
-
-        if( !(tipo = JSON.parse(localStorage.getItem('buscarPor'))))
-        {
-          tipo = ""
-        }
-
+        try {
+          tipo = JSON.parse(localStorage.getItem('buscarPor'))
+          this.consultarProductos(tipo)
+    }
+    catch(err) {
+        tipo = ""
         this.consultarProductos(tipo)
+    }
+
+
+
       },
       organizarArreglo()
       {

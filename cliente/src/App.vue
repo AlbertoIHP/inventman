@@ -1,7 +1,6 @@
   <!-- Esta seccion del componente View, hace referencia al HTML-->
 <template>
   <section>
-    <template v-if="usuarioLogeado">
     <md-sidenav class="md-left" ref="inventaryMenu" @open="open('Left')" @close="close('Left')" >
       <md-toolbar style="background-color: grey">
         <div class="md-toolbar-container">
@@ -34,6 +33,10 @@
       </div>
 
     </md-sidenav>
+
+
+    <template v-if="usuarioLogeado">
+
 
     <md-sidenav class="md-left" ref="homeMenu" @open="open('Left')" @close="close('Left')">
             <md-button class="botonSinBordes" @click="ir('um')"  style="text-align: left" >Modulo de Usuarios</md-button>
@@ -96,10 +99,12 @@
   export default {
     created()
     {
+
       this.$root.$on('inicioSesion', ()=>{
         console.log("Alguien inicio sesion")
         this.usuarioLogeado = true
         this.isHome = true
+        this.obtenerProductos();
       })
     },
     data () {
@@ -140,6 +145,7 @@
       },
       goInventario()
       {
+        localStorage.setItem('buscarPor', this.buscar)
         this.$router.push('/inventario')
         this.isInventario = true
         this.isHome =false
@@ -191,26 +197,16 @@
       {
         servicioProducto.query().then(data => {
           this.productos = data.body.data;
+          this.obtenerCategorias()
         })
       },
       buscartexto()
       {
-        if(this.buscar === "")
-        {
-          localStorage.clear('buscarPor')
-        }
-        else
-        {
+
           localStorage.setItem('buscarPor', this.buscar)
-        }
 
         this.$emit("buscar")
       }
-    },
-    mounted ()
-    {
-      this.obtenerProductos();
-      this.obtenerCategorias();
     }
   }
 </script>
