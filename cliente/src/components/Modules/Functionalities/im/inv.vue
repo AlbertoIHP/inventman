@@ -54,8 +54,13 @@
   const servicioProductos = new ApiConnect('products')
   const servicioInventario = new ApiConnect('inventaries')
   const servicioLocal = new ApiConnect('locals')
+  import axi from 'axios';
+import { LocalStorageCredentialsService }  from '@/services'
 
-  import axios from 'axios'
+  var a = new LocalStorageCredentialsService()
+  const axios = axi.create({
+  headers: {'Authorization': 'Bearer '+a.getToken()}
+});
 
 
 

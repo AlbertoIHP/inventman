@@ -106,6 +106,8 @@
         this.isHome = true
         this.obtenerProductos();
       })
+
+      this.obtenerProductos();
     },
     data () {
       return {

@@ -133,7 +133,13 @@
   const servicioFuncionalidades = new ApiConnect('functionalities')
   const servicioPermisos = new ApiConnect('permises')
 
-  import axios from 'axios'
+  import axi from 'axios';
+import { LocalStorageCredentialsService }  from '@/services'
+
+  var a = new LocalStorageCredentialsService()
+  const axios = axi.create({
+  headers: {'Authorization': 'Bearer '+a.getToken()}
+});
 
   export default{
     created(){

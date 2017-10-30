@@ -126,7 +126,13 @@
   const servicioVentas = new ApiConnect('sales')
   const servicioUsuarios = new ApiConnect('users')
   import moment from 'moment'
-  import axios from 'axios';
+  import axi from 'axios';
+import { LocalStorageCredentialsService }  from '@/services'
+
+  var a = new LocalStorageCredentialsService()
+  const axios = axi.create({
+  headers: {'Authorization': 'Bearer '+a.getToken()}
+});
   export default {
     components: {
       prodsale

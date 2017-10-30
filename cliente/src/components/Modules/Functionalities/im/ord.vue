@@ -152,7 +152,13 @@
   const servicioOrden = new ApiConnect('orders')
   const servicioUsuarios = new ApiConnect('users')
 
-  import axios from 'axios';
+  import axi from 'axios';
+import { LocalStorageCredentialsService }  from '@/services'
+
+  var a = new LocalStorageCredentialsService()
+  const axios = axi.create({
+  headers: {'Authorization': 'Bearer '+a.getToken()}
+});
   import moment from 'moment'
 
 
