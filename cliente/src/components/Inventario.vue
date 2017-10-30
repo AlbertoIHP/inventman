@@ -110,24 +110,31 @@
         tipos: [],
         productosMostrar: [],
         detalle: {name: ""},
-        arregloAuxiliar: []
+        arregloAuxiliar: [],
+        usuarioActual: ""
       }
     },
     created() {
-      this.$parent.$on("buscar", ()=>{
-      this.buscar()
-      })
+      if( (this.usuarioActual = localStorage.getItem('user')))
+      {
+        this.$parent.$on("buscar", ()=>{
+        this.buscar()
+        })
 
-      servicioCategoria.query().then(data =>{
-        this.categorias =data.body.data;
-      })
+        servicioCategoria.query().then(data =>{
+          this.categorias =data.body.data;
+        })
 
-      servicioTipo.query().then(data => {
-        this.tipos =data.body.data;
-      })
+        servicioTipo.query().then(data => {
+          this.tipos =data.body.data;
+        })
 
-      localStorage.clear('buscarPor')
-      this.buscar("")
+        this.buscar("")
+      }
+      else
+      {
+        this.$router.push('/')
+      }
     },
     methods:
     {

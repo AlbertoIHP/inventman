@@ -7,9 +7,21 @@
 
 <script>
   export default {
-    data:  ({
-
-    }),
+    created()
+    {
+      if( (this.usuarioActual = localStorage.getItem('user')))
+      {
+      }
+      else
+      {
+        this.$router.push('/')
+      }
+    },
+    data(){
+      return{
+          usuarioActual : ''
+      }
+    },
     methods:
     {
 

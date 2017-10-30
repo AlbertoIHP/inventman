@@ -38,6 +38,15 @@ import prod from '@/components/Modules/Functionalities/im/prod'
 import prov from '@/components/Modules/Functionalities/im/prov'
 import pt from '@/components/Modules/Functionalities/im/pt'
   export default {
+    created(){
+      if(localStorage.getItem('user'))
+      {
+      }
+      else
+      {
+        this.$router.push('/')
+      }
+    },
     components: {
       inv,
       ord,

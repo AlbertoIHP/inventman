@@ -11,17 +11,17 @@ class LocalStorageCredentialsService
   }
   setToken (token)
   {
-    localStorage.setItem('token_test', token)
+    localStorage.setItem('token', token)
   }
   getToken ()
   {
-    let token = localStorage.getItem('token_test')
+    let token = localStorage.getItem('token')
     return token
   }
   clearCredentials ()
   {
-    localStorage.clear('user_test')
-    localStorage.clear('token_test')
+    localStorage.clear('user')
+    localStorage.clear('token')
   }
 
 }

@@ -13,6 +13,15 @@
 import sales from '@/components/Modules/Functionalities/sm/sales'
 import prodsale from '@/components/Modules/Functionalities/sm/prodsale'
   export default {
+    created(){
+      if(localStorage.getItem('user'))
+      {
+      }
+      else
+      {
+        this.$router.push('/')
+      }
+    },
     components: {
         sales,
         prodsale

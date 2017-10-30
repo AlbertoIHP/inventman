@@ -30,6 +30,15 @@ import us from '@/components/Modules/Functionalities/um/u'
 import lv from '@/components/Modules/Functionalities/um/lv'
 import c from '@/components/Modules/Functionalities/um/c'
   export default {
+    created(){
+      if( localStorage.getItem('user'))
+      {
+      }
+      else
+      {
+        this.$router.push('/')
+      }
+    },
     components: {
         pu,
         tu,

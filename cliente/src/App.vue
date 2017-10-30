@@ -1,6 +1,7 @@
   <!-- Esta seccion del componente View, hace referencia al HTML-->
 <template>
   <section>
+    <template v-if="usuarioLogeado">
     <md-sidenav class="md-left" ref="inventaryMenu" @open="open('Left')" @close="close('Left')" >
       <md-toolbar style="background-color: grey">
         <div class="md-toolbar-container">
@@ -70,7 +71,7 @@
         </md-menu-content>
       </md-menu>
     </md-toolbar>
-
+</template>
 
     <router-view class="contenidoBajoToolbar"></router-view>
 
@@ -87,16 +88,29 @@
   import {ApiConnect } from '@/services'
   const servicioProducto = new ApiConnect('productTypes')
   const servicioCategoria = new ApiConnect('productCategories')
+  import { LocalStorageCredentialsService }  from '@/services'
+
+
+
   //Luego exportamos el componente de navegacion para ser utilziado en el template
   export default {
-
+    created()
+    {
+      this.$root.$on('inicioSesion', ()=>{
+        console.log("Alguien inicio sesion")
+        this.usuarioLogeado = true
+        this.isHome = true
+      })
+    },
     data () {
       return {
         isInventario: false,
         isHome: true,
         categorias: [],
         productos: [],
-        buscar: ""
+        buscar: "",
+        usuarioLogeado: localStorage.getItem('user'),
+        credentialService: new LocalStorageCredentialsService()
       }
     },
     components: {
@@ -139,7 +153,10 @@
       cerrarSesion()
       {
         this.$router.push('/')
-        this.isInventario = false;
+        this.isInventario = false
+        this.isHome = false
+        this.usuarioLogeado = false
+        this.credentialService.clearCredentials()
       },
       openSideNav(reference) {
         if(reference === 'inventary')

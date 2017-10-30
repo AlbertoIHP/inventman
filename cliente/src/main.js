@@ -41,8 +41,10 @@ Vue.config.productionTip = false
 //Agregamos cabeceras a todas las peticiones modificando los interceptores de la INSTANCIA de Vue, cosa de que cualquier elemento que haga uso de esta instancia utilizara estas cabezeras
 Vue.http.interceptors.push((request, next) => {
 
+
+console.log("SETEANDO TOKEN")
   //Se agrega el token de autorizacion, mediante el objeto de la clase LocalStorageCredentialsService
-  request.headers.set('Authorization', credentials.getToken())
+  request.headers.set('Authorization', 'Bearer '+credentials.getToken())
 
   //Se agrega la especificacion de Content-Type para que acepte ficheros de tipo JSON
   request.headers.set('Accept', 'application/json')
@@ -56,13 +58,7 @@ Vue.http.interceptors.push((request, next) => {
     //Si el servidor responde con un 401
     if (response.status === 401) {
       //Limpiamos las credenciales
-      credentials.clearCredentials()
-
-      //Redirigimos al cliente de donde este ubicado a la Single Page Application, y esta a su vez al index por default que tenga configurado segun las rutas
-      //window.location.href = (address.spa)
-
-      // ???
-      vm.$dispatch('logout')
+      // credentials.clearCredentials()
     }
 
   })
