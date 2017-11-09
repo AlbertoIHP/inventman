@@ -11,6 +11,9 @@ import router from './router'
 import VueMaterial from 'vue-material'
 Vue.use(VueMaterial)
 
+import VueHighcharts from 'vue-highcharts'
+Vue.use(VueHighcharts)
+
 import('../node_modules/vuetify/dist/vuetify.min.css')
 //Servicios
   //Servicio que permite obtener informacion desde el localStorage

@@ -1,7 +1,7 @@
   <!-- Esta seccion del componente View, hace referencia al HTML-->
 <template>
   <section>
-    <md-sidenav class="md-left" ref="inventaryMenu" @open="open('Left')" @close="close('Left')" >
+    <md-sidenav class="md-left md-fixed" ref="inventaryMenu" @open="open('Left')" @close="close('Left')">
       <md-toolbar style="background-color: grey">
         <div class="md-toolbar-container">
             <md-layout md-gutter>
@@ -38,7 +38,9 @@
     <template v-if="usuarioLogeado">
 
 
-    <md-sidenav class="md-left" ref="homeMenu" @open="open('Left')" @close="close('Left')">
+    <md-sidenav class="md-left md-fixed" ref="homeMenu" @open="open('Left')" @close="close('Left')">
+      <md-toolbar style="background-color: grey">
+      </md-toolbar>
             <md-button class="botonSinBordes" @click="ir('um')"  style="text-align: left" >Modulo de Usuarios</md-button>
             <md-button class="botonSinBordes" @click="ir('im')" style="text-align: left" >Modulo de Inventario y Pedidos</md-button>
             <md-button class="botonSinBordes" @click="ir('sm')" style="text-align: left" >Modulo de Ventas</md-button>
