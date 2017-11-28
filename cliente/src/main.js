@@ -8,8 +8,9 @@ import App from './App'
 import router from './router'
 
 
-import VueMaterial from 'vue-material'
-Vue.use(VueMaterial)
+import Vuetify from 'vuetify'
+ 
+Vue.use(Vuetify)
 
 import('../node_modules/vuetify/dist/vuetify.min.css')
 //Servicios

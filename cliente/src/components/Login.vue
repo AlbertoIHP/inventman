@@ -1,35 +1,59 @@
 <template>
   <section>
       <div class="row contenedorLogin" >
-          <img src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489714293/zoho-inventory.png"  class="overImage">
-        <md-card style="height: 100%">
-          <md-card-media-cover md-solid>
-            <md-card-media >
-              <img src="http://resources.emaze.com/vbscenes/layoutimages/635341971811770951_background3jpg" alt="Skyscraper" style="height: 500px" >
+          <img src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1489714293/zoho-inventory.png"  style="z-index:1" class="overImage">
+          
+         <v-card style="height: 100%">
+            <v-card-media src="http://resources.emaze.com/vbscenes/layoutimages/635341971811770951_background3jpg" alt="Skyscraper" style="height: 500px">
 
-            </md-card-media>
+          <v-container fluid style="min-height: 0;z-index:6;padding-top:30%" grid-list-lg >
+            <v-layout row wrap>
+              <v-flex xs12>
+                <v-card style="background-color: rgba(0, 0, 0, .4);" class="white--text">
 
-            <md-card-area>
-              <md-card-header>
-                <md-input-container>
-                <md-icon style="color: white">person</md-icon>
-                <label style="color: white">Corre electronico</label>
-                <md-input type="email" v-model="credentials.email" style="color: white !important"></md-input>
-              </md-input-container>
-
-              <md-input-container>
-              <md-icon style="color: white">lock</md-icon>
-              <label style="color: white">Contraseña</label>
-              <md-input type="password" v-model="credentials.password" style="color: white" ></md-input>
-            </md-input-container>
-              </md-card-header>
-
-              <md-card-actions>
-                <md-button @click="iniciarSesion()" style="width: 100%">Iniciar Sesion</md-button>
-              </md-card-actions>
-            </md-card-area>
-          </md-card-media-cover>
-        </md-card>
+                     <v-container fluid grid-list-md>
+       
+                        <v-layout row>
+                          <v-flex xs12>
+                            <v-text-field
+                              name="input-1"
+                              label="Correo electronico"
+                              type="email" 
+                              v-model="credentials.email"
+                              class="white--text"
+                              dark
+                              prepend-icon="person"
+                            ></v-text-field>
+                          </v-flex>
+                        
+                        </v-layout>
+                        <v-layout row>
+                          <v-flex xs12>
+                            <v-text-field
+                              name="input-1-3"
+                              label="Contraseña"
+                              type="password" 
+                              v-model="credentials.password"
+                              class="white--text"
+                              dark
+                              prepend-icon="lock"
+                            ></v-text-field>
+                          </v-flex>
+                        
+                        </v-layout>
+                       
+                      </v-container>
+                    
+                      <v-card-actions align-center>
+                        <v-btn flat dark @click="iniciarSesion()" style="width:100%;" >Iniciar sesión</v-btn>
+                      </v-card-actions>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>                
+         </v-card-media>
+        </v-card> 
+          
       </div>
   </section>
 </template>
@@ -80,7 +104,7 @@ import { LocalStorageCredentialsService }  from '@/services'
 }
 .overImage
 {
-  z-index: 5;
+z-index: 5;
 position: relative;
 top: 250px;
 height: 70%;
