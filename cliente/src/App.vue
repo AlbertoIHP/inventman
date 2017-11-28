@@ -1,89 +1,118 @@
-  <!-- Esta seccion del componente View, hace referencia al HTML-->
+<!-- Esta seccion del componente View, hace referencia al HTML-->
 <template>
   <section>
-    <md-sidenav class="md-left md-fixed" ref="inventaryMenu" @open="open('Left')" @close="close('Left')">
-      <md-toolbar style="background-color: grey">
-        <div class="md-toolbar-container">
-            <md-layout md-gutter>
-              <md-layout md-flex="80">
-                <md-input-container >
-                  <md-input v-model="buscar" ></md-input>
-                </md-input-container>
-              </md-layout>
-              <md-layout>
-                <md-button class="md-icon-button md-raised" @click="buscartexto()">
-                  <md-icon>search</md-icon>
-                </md-button>
-              </md-layout>
-            </md-layout>
-        </div>
-      </md-toolbar>
-      <md-button class="botonSinBordes" style="text-align: left" disabled>Categorias</md-button>
-      <div class="row" v-for="categoria in categorias">
-        <div class="col s12">
-          <md-button class="botonSinBordes" @click="buscarPor(categoria.name, categoria.id, 'categoria')">{{categoria.name}}</md-button>
-        </div>
-      </div>
+    <v-app v-if="usuarioLogeado">
+      <v-navigation-drawer
+        temporary
+        v-model="navInventario"
+        light
+        app
+      >
+        <v-toolbar flat class="transparent">
+          <v-list class="pa-0">
+            <v-list-tile>
+              <v-list-tile-content>
+                <v-text-field
+                    name="input-1-3"
+                    label="Buscar"
+                    v-model="buscar"
+                    single-line
+                  ></v-text-field>
+              </v-list-tile-content>
+              <v-list-tile-action>
+                <v-btn icon ripple @click="buscartexto()">
+                  <v-icon color="grey lighten-1">search</v-icon>
+                </v-btn>
+              </v-list-tile-action>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+        <v-list dense>
+          <v-subheader inset>Categorias</v-subheader>
+          <v-list-tile v-for="categoria in categorias" @click="buscarPor(categoria.name, categoria.id, 'categoria')">
+            <v-list-tile-content>
+              <v-list-tile-title>{{ categoria.name }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-subheader inset>Productos</v-subheader>
+          <v-list-tile v-for="producto in productos" @click="buscarPor(producto.name, producto.id, 'tipo')">
+            <v-list-tile-content>
+              <v-list-tile-title>{{ producto.name }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
 
-      <md-button class="botonSinBordes" style="text-align: left" disabled>Productos</md-button>
-      <div class="row" v-for="producto in productos">
-        <div class="col s12">
-          <md-button class="botonSinBordes" @click="buscarPor(producto.name, producto.id, 'tipo')">{{producto.name}}</md-button>
-        </div>
-      </div>
+      <v-navigation-drawer
+        temporary
+        v-model="navHome"
+        light
+        app
+      >
+        <v-list dense>
+          <v-list-tile @click="ir('um')">
+            <v-list-tile-action>
+              <v-icon></v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Módulo de usuarios</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile @click="ir('im')">
+            <v-list-tile-action>
+              <v-icon></v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Módulo de inventario y pedidos</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile @click="ir('sm')">
+            <v-list-tile-action>
+              <v-icon></v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Módulo de Ventas</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
 
-    </md-sidenav>
-
-
-    <template v-if="usuarioLogeado">
-
-
-    <md-sidenav class="md-left md-fixed" ref="homeMenu" @open="open('Left')" @close="close('Left')">
-      <md-toolbar style="background-color: grey">
-      </md-toolbar>
-            <md-button class="botonSinBordes" @click="ir('um')"  style="text-align: left" >Modulo de Usuarios</md-button>
-            <md-button class="botonSinBordes" @click="ir('im')" style="text-align: left" >Modulo de Inventario y Pedidos</md-button>
-            <md-button class="botonSinBordes" @click="ir('sm')" style="text-align: left" >Modulo de Ventas</md-button>
-    </md-sidenav>
-
-
-
-
-
-    <md-toolbar class="fixedToolbar"style="background-color: grey">
-      <md-button  v-if="isInventario" class="md-icon-button" @click="openSideNav('inventary')">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <md-button  v-if="isHome" class="md-icon-button" @click="openSideNav('home')">
-        <md-icon>menu</md-icon>
-      </md-button>
-
-      <md-button-toggle md-single style="heigth: 100%">
-        <md-button  @click="goHome()" style="color: white">Home</md-button>
-        <md-button  @click="goInventario()" style="color: white">Inventario</md-button>
-        <md-button  @click="goActividad()" style="color: white">Mi Actividad</md-button>
-      </md-button-toggle>
-      <p style="flex: 1"></p>
-      <md-menu >
-
-        <md-button class="md-icon-button" md-menu-trigger>
-          <md-icon>more_vert</md-icon>
-        </md-button>
-
-        <md-menu-content>
-          <md-menu-item>Editar Perfil</md-menu-item>
-          <md-menu-item @click="cerrarSesion()">Cerrar Sesion</md-menu-item>
-        </md-menu-content>
-      </md-menu>
-    </md-toolbar>
-</template>
-
-    <router-view class="contenidoBajoToolbar"></router-view>
-
-
-
-
-
+      <v-toolbar color="grey" fixed app>
+        <v-toolbar-side-icon v-if="isInventario" @click.stop="navInventario = !navInventario"></v-toolbar-side-icon>
+        <v-toolbar-side-icon v-if="isHome" @click.stop="navHome = !navHome"></v-toolbar-side-icon>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn flat @click="goHome()">Home</v-btn>
+          <v-btn flat @click="goInventario()">Inventario</v-btn>
+          <v-btn flat @click="goActividad()">Mi actividad</v-btn>
+        </v-toolbar-items>
+        <v-spacer></v-spacer>
+        <v-menu offset-y>
+          <v-btn icon dark slot="activator">
+            <v-icon>
+              more_vert
+            </v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title>Editar perfil</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile @click="cerrarSesion()">
+              <v-list-tile-title>Cerrar sesion</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+        <v-toolbar-title></v-toolbar-title>
+      </v-toolbar>
+      <v-content>
+        <router-view></router-view>
+      </v-content>
+      <v-footer color="grey" app>
+        <span class="white--text">&copy; 2017</span>
+      </v-footer>
+    </v-app>
+    <v-content v-else="usuarioLogeado">
+      <router-view></router-view>
+    </v-content>
   </section>
 </template>
 
@@ -113,8 +142,10 @@
     },
     data () {
       return {
-        isInventario: false,
-        isHome: true,
+        navInventario: false,
+        navHome: false,
+        isInventario: this.$route.path=='/inventario',
+        isHome: this.$route.path=='/home',
         categorias: [],
         productos: [],
         buscar: "",
@@ -167,23 +198,6 @@
         this.isHome = false
         this.usuarioLogeado = false
         this.credentialService.clearCredentials()
-      },
-      openSideNav(reference) {
-        if(reference === 'inventary')
-        {
-          this.$refs.inventaryMenu.toggle();
-        }
-        else if(reference === 'home')
-        {
-          this.$refs.homeMenu.toggle();
-        }
-
-      },
-      open(ref) {
-        console.log('Opened: ' + ref);
-      },
-      close(ref) {
-        console.log('Closed: ' + ref);
       },
       buscarPor(nombre, id, tipo)
       {

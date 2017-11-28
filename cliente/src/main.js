@@ -11,8 +11,8 @@ import router from './router'
 import VueMaterial from 'vue-material'
 Vue.use(VueMaterial)
 
-import VueHighcharts from 'vue-highcharts'
-Vue.use(VueHighcharts)
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
 
 import('../node_modules/vuetify/dist/vuetify.min.css')
 //Servicios

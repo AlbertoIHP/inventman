@@ -68,13 +68,13 @@
               md-flex-xsmall="100"
               md-flex="50" 
               :options="ventastiempooptions" 
-              ref="highcharts">
+              ref="highchartsventastiempo">
               </highcharts>
               <highcharts 
               md-flex-xsmall="100"
               md-flex="50" 
               :options="clientestiempooptions" 
-              ref="highcharts">
+              ref="highchartsclientestiempo">
               </highcharts>
             </md-layout>
           </md-card-content>
@@ -131,7 +131,7 @@
             }]
           },
           tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: 'u'
           },
           legend: {
             layout: 'vertical',

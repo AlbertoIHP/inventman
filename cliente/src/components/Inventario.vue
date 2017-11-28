@@ -55,15 +55,18 @@
     </md-button>
 
     <md-dialog md-open-from="#fab" md-close-to="#fab" ref="dialog2">
-      <md-dialog-title>Create new note</md-dialog-title>
+      <md-dialog-title>Añadir producto</md-dialog-title>
 
-      <md-dialog-content>
+      <md-layout>
         <form>
           <md-input-container>
             <label>Note</label>
             <md-textarea></md-textarea>
           </md-input-container>
         </form>
+      </md-layout>
+      <md-dialog-content>
+        
       </md-dialog-content>
 
       <md-dialog-actions>

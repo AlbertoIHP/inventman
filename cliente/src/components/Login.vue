@@ -81,10 +81,14 @@ import { LocalStorageCredentialsService }  from '@/services'
 .overImage
 {
   z-index: 5;
-position: relative;
-top: 250px;
-height: 70%;
-width: 70%;
-left: 100px;
+  position: relative;
+  top: 250px;
+  height: 70%;
+  width: 70%;
+  left: 100px;
+}
+.md-input-focus
+{
+  color: white;
 }
 </style>
