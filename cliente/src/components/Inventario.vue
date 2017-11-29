@@ -6,89 +6,111 @@
       </div>
     </div>
 
-    <md-layout md-gutter  v-for="producto in arregloAuxiliar">
-      <md-layout   md-flex-offset="20" v-if="producto[0]">
-        <md-card class="tarjetaProducto">
-          <md-card-media>
+
+   <v-container fluid grid-list-sm v-for="producto in arregloAuxiliar"  fluid grid-list-md>
+
+    <v-layout row justify-center>
+
+      <v-flex d-flex xs12 sm6 md3 row wrap v-if="producto[0]">
+        
+        
+        <v-card class="tarjetaProducto">
+          <v-card-media>
             <img v-bind:src="producto[0].urlimage" class="imagenProducto">
-          </md-card-media>
+          </v-card-media>
 
-          <md-card-header>
-            <div class="md-title">{{producto[0].name}} </div>
-            <div class="md-subhead">{{producto[0].description}}</div>
-          </md-card-header>
+          <v-card-title>
+            <div class="">{{producto[0].name}} </div>
+            <div class="">{{producto[0].description}}</div>
+          </v-card-title>
 
-          <md-card-actions>
-            <md-button  @click="openDialog('detallesProducto', producto[0])">Ver detalles</md-button>
-          </md-card-actions>
-        </md-card>
-      </md-layout>
-      <md-layout v-else >
+          <v-card-actions>
+            <v-btn @click="openDialog('detallesProducto', producto[0])">Ver detalles</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
 
-      </md-layout>
+      <v-flex d-flex xs12 sm6 md3  v-else >
+      </v-flex>
 
-
-      <md-layout v-if="producto[1]" >
-        <md-card class="tarjetaProducto">
-          <md-card-media>
+      <v-flex d-flex xs12 sm6 md3 v-if="producto[1]" >      
+        <v-card class="tarjetaProducto">
+          <v-card-media>
             <img v-bind:src="producto[1].urlimage"  class="imagenProducto">
-          </md-card-media>
+          </v-card-media>
 
-          <md-card-header>
-            <div class="md-title">{{producto[1].name}} </div>
-            <div class="md-subhead">{{producto[1].description}}</div>
-          </md-card-header>
+          <v-card-title>
+            <div class="">{{producto[1].name}} </div>
+            <div class="">{{producto[1].description}}</div>
+          </v-card-title>
 
-          <md-card-actions>
-            <md-button @click="openDialog('detallesProducto', producto[1])">Ver detalles</md-button>
-          </md-card-actions>
-        </md-card>
-      </md-layout>
-      <md-layout v-else >
+          <v-card-actions>
+            <v-btn @click="openDialog('detallesProducto', producto[1])">Ver detalles</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
 
-      </md-layout>
-      <br>
-    </md-layout>
+      <v-flex d-flex xs12 sm6 md3  v-else >
+      </v-flex>
 
-    <md-button style="position: fixed" class="md-fab md-fab-bottom-right" id="fab" @click="openDialog('dialog2')">
-      <md-icon>add</md-icon>
-    </md-button>
+    </v-layout>
+  </v-container>
 
-    <md-dialog md-open-from="#fab" md-close-to="#fab" ref="dialog2">
-      <md-dialog-title>Create new note</md-dialog-title>
 
-      <md-dialog-content>
+
+    <v-btn style="position: fixed" class="" id="fab" @click="openDialog('dialog2')">
+      <v-icon>add</v-icon>
+    </v-btn>
+
+    <v-dialog md-open-from="#fab" md-close-to="#fab" ref="dialog2">
+      <v-dialog>Create new note</v-dialog>
+
+      <v-dialog>
         <form>
-          <md-input-container>
-            <label>Note</label>
-            <md-textarea></md-textarea>
-          </md-input-container>
+          <v-container fluid>
+          <v-layout row>
+            <v-flex xs12>
+              <v-text-field
+                name="input-1"
+                label="Note"
+                textarea
+              ></v-text-field>
+            </v-flex>
+          </v-layout>
+        </v-container>
         </form>
-      </md-dialog-content>
+      </v-dialog>
 
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="closeDialog('dialog2', '')">Cancel</md-button>
-        <md-button class="md-primary" @click="closeDialog('dialog2', '')">Create</md-button>
-      </md-dialog-actions>
-    </md-dialog>
+      <v-dialog>
+        <v-btn class="md-primary" @click="closeDialog('dialog2', '')">Cancel</v-btn>
+        <v-btn class="md-primary" @click="closeDialog('dialog2', '')">Create</v-btn>
+      </v-dialog>
+    </v-dialog>
 
-    <md-dialog md-open-from="#fab" md-close-to="#fab" ref="detallesProducto">
-      <md-dialog-title>Detalles producto {{detalle.name}}</md-dialog-title>
+    <v-dialog md-open-from="#fab" md-close-to="#fab" ref="detallesProducto">
+      <v-dialog>Detalles producto {{detalle.name}}</v-dialog>
 
-      <md-dialog-content>
+      <v-dialog>
         <form>
-          <md-input-container>
-            <label>Note</label>
-            <md-textarea></md-textarea>
-          </md-input-container>
+          <v-container fluid>
+          <v-layout row>
+            <v-flex xs12>
+              <v-text-field
+                name="input-1"
+                label="Note"
+                textarea
+              ></v-text-field>
+            </v-flex>
+          </v-layout>
+        </v-container>
         </form>
-      </md-dialog-content>
+      </v-dialog>
 
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="closeDialog('detallesProducto')">Cancel</md-button>
-        <md-button class="md-primary" @click="closeDialog('detallesProducto')">Create</md-button>
-      </md-dialog-actions>
-    </md-dialog>
+      <v-dialog>
+        <v-btn class="md-primary" @click="closeDialog('detallesProducto')">Cancel</v-btn>
+        <v-btn class="md-primary" @click="closeDialog('detallesProducto')">Create</v-btn>
+      </v-dialog>
+    </v-dialog>
 
 
   </section>
