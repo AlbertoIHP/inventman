@@ -1,24 +1,61 @@
 <template>
   <section>
-    <md-tabs>
-
-      <md-tab id="tu" md-label="Tipos de Usuario">
+    <v-tabs v-model="active">
+      <v-tabs-bar class="grey">
+        <v-tabs-slider></v-tabs-slider>
+        <v-tabs-item
+          :key="tu"
+          :href="'#tab-tu'"
+        >
+          Tipos de Usuario
+        </v-tabs-item>
+        <v-tabs-item
+          :key="u"
+          :href="'#tab-u'"
+        >
+          Usuarios
+        </v-tabs-item>
+        <v-tabs-item
+          :key="lv"
+          :href="'#tab-lv'"
+        >
+          Locales de Venta
+        </v-tabs-item>
+        <v-tabs-item
+          :key="c"
+          :href="'#tab-c'"
+        >
+          Tipos de Usuario
+        </v-tabs-item>
+      </v-tabs-bar>
+      <v-tabs-items>
+        <v-tabs-content
+          :key="tu"
+          :id="'tab-tu'"
+        >
         <tu></tu>
-      </md-tab>
-
-      <md-tab id="u" md-label="Usuarios">
-        <us></us>
-      </md-tab>
-
-      <md-tab id="lv" md-label="Locales de Venta">
+        </v-tabs-content>
+        <v-tabs-content
+          :key="u"
+          :id="'tab-u'"
+        >
+        <u></u>
+        </v-tabs-content>
+        <v-tabs-content
+          :key="lv"
+          :id="'tab-lv'"
+        >
         <lv></lv>
-      </md-tab>
-
-      <md-tab id="c" md-label="Ciudades">
+        </v-tabs-content>
+        <v-tabs-content
+          :key="c"
+          :id="'tab-c'"
+        >
         <c></c>
-      </md-tab>
-
-    </md-tabs>
+        </v-tabs-content>
+      </v-tabs-items>
+    </v-tabs>
+      
   </section>
 </template>
 
@@ -53,5 +90,7 @@ import c from '@/components/Modules/Functionalities/um/c'
 
 
 <style scoped>
-
+  .v-tabs {
+    color:white !important;
+  }
 </style>

@@ -1,87 +1,73 @@
 <template>
   <section>
+    <v-toolbar>
+      <v-toolbar-title> Historial de ordenes</v-toolbar-title>
+    </v-toolbar>
+    <v-data-table
+        v-bind:headers="headers"
+        :items="orders"
+        class="elevation-1"
+      >
+      <template slot="items" slot-scope="props">
+        <td>
+          <v-btn flat @click="editar(props.item, 'editOrder')">
+            <v-icon color="grey lighten-1">edit</v-icon>
+          </v-btn>
+          <v-btn flat @click="borrar(props.item)">
+            <v-icon color="grey lighten-1">delete</v-icon>
+          </v-btn>
+        </td>
+        <td>{{ props.item.users_id }}</td>
+        <td>{{ props.item.products_id }}</td>
+        <td>{{ props.item.time }}</td>
+        <td>{{ props.item.date }}</td>
+        <td>{{ props.item.amount }}</td>
+        <td>{{ props.item.total }}</td>
+      </template>
+    </v-data-table>
 
-    <md-table-card>
+    <v-card-text style="height: 100px; position: relative">
+      <v-btn
+        absolute
+        dark
+        fab
+        top
+        right
+        color="pink"
+      >
+        <v-icon>add</v-icon>
+      </v-btn>
+    </v-card-text>
 
-      <md-toolbar>
-        <h1 class="md-title">Historial de ordenes</h1>
-      </md-toolbar>
-
-      <md-table>
-        <md-table-header>
-          <md-table-row>
-            <md-table-head>Acciones </md-table-head>
-            <md-table-head>Usuario a Cargo </md-table-head>
-            <md-table-head>Producto a Encargar </md-table-head>
-            <md-table-head>Hora del Pedido </md-table-head>
-            <md-table-head>Fecha del Pedido </md-table-head>
-            <md-table-head>Cantidad Pedida </md-table-head>
-            <md-table-head>Costo Total del Pedido</md-table-head>
-          </md-table-row>
-
-        </md-table-header>
-
-        <md-table-body>
-          <md-table-row v-for="order in orders" >
-            <md-table-cell>
-              <div class="row">
-                <div class="col s6">
-              <md-button @click="editar(order, 'editOrder')"><md-icon>edit</md-icon></md-button>
-                </div>
-                <div class="col s6">
-              <md-button @click="borrar(order)"><md-icon>delete</md-icon></md-button>
-                </div>
-              </div>
-
-
-            </md-table-cell>
-
-            <md-table-cell>
-              {{ order.users_id }}
-            </md-table-cell>
-
-            <md-table-cell>
-              {{ order.products_id }}
-            </md-table-cell>
-
-            <md-table-cell>
-              {{ order.time }}
-            </md-table-cell>
-
-            <md-table-cell>
-              {{ order.date }}
-            </md-table-cell>
-
-            <md-table-cell>
-              {{ order.amount }}
-            </md-table-cell>
-
-            <md-table-cell>
-              {{ order.total }}
-            </md-table-cell>
-
-
-          </md-table-row>
-        </md-table-body>
-      </md-table>
-
-      <md-table-pagination
-        md-size="5"
-        v-bind:md-total="orders.length"
-        md-page="1"
-        md-label="Elementos"
-        md-separator="de"
-        :md-page-options="[5, 10, 25, 50]"></md-table-pagination>
-    </md-table-card>
-
-
-
-
-    <md-button  class="md-fab md-fab-bottom-right" id="addOrder" @click="openDialog('addOrder')">
+    <md-button  class="md-fab md-fab-bottom-right" id="addOrder" @click.native.stop="addOrder = true">
       <md-icon>add</md-icon>
     </md-button>
 
-
+    <v-dialog v-model="addOrder">
+        <v-card class="pa-4">
+          <v-card-title class="headline">Agregar Orden</v-card-title>
+          <v-text-field
+              name="input-1"
+              label="Cantidad"
+              id="cantidad"
+              v-model="newOrder.amount"
+            ></v-text-field>
+          <v-select
+              v-bind:items="products"
+              v-model="newOrder.products_id"
+              label="Select"
+              single-line
+              bottom
+              item-text="name"
+              item-value="id"
+            ></v-select>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="red darken-1" flat="flat" @click.native="addOrder = false">Cancelar</v-btn>
+            <v-btn color="green darken-1" flat="flat" @click.native="agregarOrder('addOrder')">Agregar</v-btn>
+          </v-card-actions>
+        </v-card>
+    </v-dialog>
 
 
     <md-dialog md-open-from="#addOrder" md-close-to="#addOrder" ref="addOrder">
@@ -174,8 +160,53 @@ import { LocalStorageCredentialsService }  from '@/services'
         //ESTO ESTA HARD CODEADO!!!! EL USER ID DEBE SER REEMPLAZADO DINAMICAMENTE
         newOrder: {id: 0, users_id: 1, products_id: 0, time: "", date: moment().format("DD/MM/YYYY"), amount: "", total: ""},
         editOrder: {id: 0, users_id: 1, products_id: 0, time: "", date: moment().format("DD/MM/YYYY"), amount: "", total: ""},
+        addOrder: false,
         users: [],
-        products: []
+        products: [],
+        headers: [
+          {
+            text: 'Acciones',
+            align: 'left',
+            sortable: false,
+            value: 'acciones'
+          },
+          {
+            text: 'Usuario a Cargo',
+            align: 'left',
+            sortable: false,
+            value: 'usuario'
+          },
+          {
+            text: 'Producto a Encargar',
+            align: 'left',
+            sortable: false,
+            value: 'producto'
+          },
+          {
+            text: 'Hora del Pedido',
+            align: 'left',
+            sortable: false,
+            value: 'hora'
+          },
+          {
+            text: 'Fecha del Pedido',
+            align: 'left',
+            sortable: false,
+            value: 'fecha'
+          },
+          {
+            text: 'Cantidad Pedida',
+            align: 'left',
+            sortable: false,
+            value: 'cantidad'
+          },
+          {
+            text: 'Costo Total del Pedido',
+            align: 'left',
+            sortable: false,
+            value: 'costo'
+          }
+        ]
       }
     },
     methods: {
@@ -271,7 +302,7 @@ import { LocalStorageCredentialsService }  from '@/services'
           servicioOrden.save(this.newOrder).then(data => {
             this.newOrder = {id: 0, users_id: 1, products_id: 0, time: "", date: moment().format("DD/MM/YYYY"), amount: "", total: ""}
             this.obtenerOrdenes()
-            this.$refs[ref].close();
+            this.addOrder = false;
           })
 
         })

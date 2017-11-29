@@ -1,49 +1,16 @@
 <template>
   <section>
-
-    <md-table-card>
-
-      <md-toolbar>
-        <h1 class="md-title">Inventarios</h1>
-      </md-toolbar>
-
-      <md-table>
-        <md-table-header>
-          <md-table-row>
-            <md-table-head>Local  </md-table-head>
-            <md-table-head>Producto </md-table-head>
-            <md-table-head>Cantidad en Stock </md-table-head>
-          </md-table-row>
-
-        </md-table-header>
-
-        <md-table-body>
-          <md-table-row v-for="inventarie in inventaries" >
-
-            <md-table-cell>
-              {{ inventarie.locals_id }}
-            </md-table-cell>
-
-            <md-table-cell>
-              {{ inventarie.products_id }}
-            </md-table-cell>
-            <md-table-cell>
-              {{ inventarie.amount }}
-            </md-table-cell>
-
-          </md-table-row>
-        </md-table-body>
-      </md-table>
-
-      <md-table-pagination
-        md-size="5"
-        v-bind:md-total="inventaries.length"
-        md-page="1"
-        md-label="Elementos"
-        md-separator="de"
-        :md-page-options="[5, 10, 25, 50]"></md-table-pagination>
-    </md-table-card>
-
+    <v-data-table
+        v-bind:headers="headers"
+        :items="inventaries"
+        class="elevation-1"
+      >
+      <template slot="items" slot-scope="props">
+        <td>{{ props.item.locals_id }}</td>
+        <td>{{ props.item.products_id }}</td>
+        <td>{{ props.item.amount }}</td>
+      </template>
+    </v-data-table>
 
   </section>
 </template>
@@ -73,7 +40,28 @@ import { LocalStorageCredentialsService }  from '@/services'
       return {
         inventaries: [],
         locals: [],
-        products: []
+        products: [],
+        headers: [
+          {
+            text: 'Local',
+            align: 'left',
+            sortable: false,
+            value: 'local'
+          },
+          {
+            text: 'Producto',
+            align: 'left',
+            sortable: false,
+            value: 'producto'
+          },
+          {
+            text: 'Cantidad de stock',
+            align: 'left',
+            sortable: false,
+            value: 'cantidad'
+          }
+        ],
+        locals: {}
       }
     },
     methods: {

@@ -1,10 +1,24 @@
 <template>
   <section>
-    <md-tabs>
-      <md-tab id="sales" md-label="Ventas">
-          <sales></sales>
-      </md-tab>
-    </md-tabs>
+    <v-tabs v-model="active">
+      <v-tabs-bar class="grey">
+        <v-tabs-slider></v-tabs-slider>
+        <v-tabs-item
+          :key="sales"
+          :href="'#tab-sales'"
+        >
+          Ventas
+        </v-tabs-item>
+      </v-tabs-bar>
+      <v-tabs-items>
+        <v-tabs-content
+          :key="sales"
+          :id="'tab-sales'"
+        >
+        <sales></sales>
+        </v-tabs-content>
+      </v-tabs-items>
+    </v-tabs>
   </section>
 </template>
 

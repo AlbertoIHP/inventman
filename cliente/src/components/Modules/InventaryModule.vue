@@ -1,31 +1,84 @@
 <template>
   <section>
-    <md-tabs>
-      <md-tab id="inv" md-label="Inventarios">
-          <inv></inv>
-      </md-tab>
-
-      <md-tab id="ord" md-label="Ordenes de Compra">
+    <v-tabs v-model="active">
+      <v-tabs-bar class="grey">
+        <v-tabs-slider></v-tabs-slider>
+        <v-tabs-item
+          :key="inv"
+          :href="'#tab-inv'"
+        >
+          Inventarios
+        </v-tabs-item>
+        <v-tabs-item
+          :key="ord"
+          :href="'#tab-ord'"
+        >
+          Ordenes de compra
+        </v-tabs-item>
+        <v-tabs-item
+          :key="prod"
+          :href="'#tab-prod'"
+        >
+          Productos
+        </v-tabs-item>
+        <v-tabs-item
+          :key="pt"
+          :href="'#tab-pt'"
+        >
+          Tipos de productos
+        </v-tabs-item>
+        <v-tabs-item
+          :key="pc"
+          :href="'#tab-pc'"
+        >
+          Categorias de productos
+        </v-tabs-item>
+        <v-tabs-item
+          :key="prov"
+          :href="'#tab-prov'"
+        >
+          Proveedores
+        </v-tabs-item>
+      </v-tabs-bar>
+      <v-tabs-items>
+        <v-tabs-content
+          :key="inv"
+          :id="'tab-inv'"
+        >
+        <inv></inv>
+        </v-tabs-content>
+        <v-tabs-content
+          :key="ord"
+          :id="'tab-ord'"
+        >
         <ord></ord>
-      </md-tab>
-
-      <md-tab id="prod" md-label="Productos">
+        </v-tabs-content>
+        <v-tabs-content
+          :key="prod"
+          :id="'tab-prod'"
+        >
         <prod></prod>
-      </md-tab>
-
-      <md-tab id="pt" md-label="Tipos de Producto">
+        </v-tabs-content>
+        <v-tabs-content
+          :key="pt"
+          :id="'tab-pt'"
+        >
         <pt></pt>
-      </md-tab>
-
-      <md-tab id="pc" md-label="Categorias de Producto">
+        </v-tabs-content>
+        <v-tabs-content
+          :key="pc"
+          :id="'tab-pc'"
+        >
         <pc></pc>
-      </md-tab>
-
-      <md-tab id="prov" md-label="Proveedores">
+        </v-tabs-content>
+        <v-tabs-content
+          :key="prov"
+          :id="'tab-prov'"
+        >
         <prov></prov>
-      </md-tab>
-
-    </md-tabs>
+        </v-tabs-content>
+      </v-tabs-items>
+    </v-tabs>
   </section>
 </template>
 
